@@ -1,3 +1,12 @@
+A Linux driver for ESWIN 6600u chip as found in abandoned Chinese Wi-Fi dongle,
+originally bundled with StarFive VisionFive 2 board.
+
+A $10 paperweight - it's slow, buggy, lock-ups after little use and then oops the kernel.
+Suggest a different [well supported USB stick](https://github.com/morrownr/USB-WiFi/blob/main/home/USB_WiFi_Adapters_that_are_supported_with_Linux_in-kernel_drivers.md)
+that has in-tree driver, such as [Mediatek mt7921au](https://www.aliexpress.us/item/1005005935638503.html), or a wire. 
+
+Still here?
+
 ## **Wifi host driver编译指南**
 
 ## Wifi host driver框架
