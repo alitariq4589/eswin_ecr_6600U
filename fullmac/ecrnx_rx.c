@@ -1368,7 +1368,7 @@ void ecrnx_rx_reord_sta_init(struct ecrnx_hw* ecrnx_hw, struct ecrnx_vif *ecrnx_
             reord_cntrl->ecrnx_hw = ecrnx_hw;
             reord_cntrl->ecrnx_vif = ecrnx_vif;
             reord_cntrl->skip_idx = 0;
-            memset(&reord_cntrl->skip_sn, 0xffffffff, sizeof(reord_cntrl->skip_sn)/sizeof(int));
+            memset(&reord_cntrl->skip_sn, 0xFF, sizeof(reord_cntrl->skip_sn));
             INIT_LIST_HEAD(&reord_cntrl->reord_list);
             spin_lock_init(&reord_cntrl->reord_list_lock);
             timer_setup(&reord_cntrl->reord_timer, ecrnx_rx_reord_timeout_handler, 0);

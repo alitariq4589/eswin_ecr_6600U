@@ -106,6 +106,8 @@ ifeq ($(shell test $(VERSION).$(PATCHLEVEL) -ge 6.0; echo $$?),0)
 subdir-ccflags-y += -DECRNX_MODERN_KERNEL
 endif
 
+subdir-ccflags-y += -Wno-missing-prototypes
+
 # FW VARS
 subdir-ccflags-y += -DNX_VIRT_DEV_MAX=$(NX_VIRT_DEV_MAX)
 subdir-ccflags-y += -DNX_REMOTE_STA_MAX=$(NX_REMOTE_STA_MAX)

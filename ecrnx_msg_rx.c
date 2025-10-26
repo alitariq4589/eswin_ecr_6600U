@@ -575,7 +575,7 @@ static inline int ecrnx_rx_scanu_start_cfm(struct ecrnx_hw *ecrnx_hw,
 }
 
 #if LINUX_VERSION_CODE >= KERNEL_VERSION(3, 18, 0)
-static u64_l getBootTime(void)
+u64_l getBootTime(void)
 {
 	struct timespec64 ts;
 	u64_l bootTime = 0;
@@ -1384,7 +1384,7 @@ static msg_cb_fct *msg_hdlrs[] = {
 /**
  *
  */
-__maybe_unused static void ecrnx_rx_handle_msg(struct ecrnx_hw *ecrnx_hw, struct ipc_e2a_msg *msg)
+__maybe_unused void ecrnx_rx_handle_msg(struct ecrnx_hw *ecrnx_hw, struct ipc_e2a_msg *msg)
 {
 
     if(!ecrnx_hw || !msg)

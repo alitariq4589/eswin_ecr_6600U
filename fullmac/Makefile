@@ -34,11 +34,10 @@ endif
 
 ifeq ($(CONFIG_ECRNX_ESWIN_USB), y)
 $(ECRNX_MODULE_NAME)-y += usb/usb.o         \
-               usb/ecrnx_usb.o    \
                usb/core.o         \
                usb/fw.o           \
-	       eswin_port/eswin_utils.o
-
+               usb/ecrnx_usb.o    \
+               eswin_port/eswin_utils.o
 endif
 
 ifeq ($(CONFIG_ECRNX_WIFO_CAIL), y)

@@ -1,3 +1,5 @@
+CONFIG_ECRNX_USB = y
+
 export ECRNX_MODULE_NAME=wlan_ecr6600u_usb
 
 # Enable A-MSDU support (need FW support)
