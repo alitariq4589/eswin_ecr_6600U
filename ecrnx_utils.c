@@ -95,7 +95,7 @@ void ecrnx_ipc_elem_var_deallocs(struct ecrnx_hw *ecrnx_hw,
  * @ecrnx_hw: Main driver data
  * @elem: Pointer to the skb elem that will contain the address of the buffer
  */
-int ecrnx_ipc_skb_elem_allocs(struct ecrnx_hw *ecrnx_hw,
+static int ecrnx_ipc_skb_elem_allocs(struct ecrnx_hw *ecrnx_hw,
                                  struct ecrnx_ipc_skb_elem *elem, size_t skb_size,
                                  enum dma_data_direction dir,
                                  int (*push)(struct ipc_host_env_tag *,

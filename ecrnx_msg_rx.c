@@ -575,7 +575,7 @@ static inline int ecrnx_rx_scanu_start_cfm(struct ecrnx_hw *ecrnx_hw,
 }
 
 #if LINUX_VERSION_CODE >= KERNEL_VERSION(3, 18, 0)
-u64_l getBootTime(void)
+static u64_l getBootTime(void)
 {
 	struct timespec64 ts;
 	u64_l bootTime = 0;
@@ -899,9 +899,17 @@ static inline int ecrnx_rx_sm_connect_ind(struct ecrnx_hw *ecrnx_hw,
     if (ind->roamed) {
         struct cfg80211_roam_info info;
         memset(&info, 0, sizeof(info));
+        
+#ifdef ECRNX_MODERN_KERNEL
+        if (ecrnx_vif->ch_index < NX_CHAN_CTXT_CNT)
+            info.links[0].channel = ecrnx_hw->chanctx_table[ecrnx_vif->ch_index].chan_def.chan;
+        info.links[0].bssid = (const u8 *)ind->bssid.array;
+        info.valid_links = BIT(0);
+#else
         if (ecrnx_vif->ch_index < NX_CHAN_CTXT_CNT)
             info.channel = ecrnx_hw->chanctx_table[ecrnx_vif->ch_index].chan_def.chan;
         info.bssid = (const u8 *)ind->bssid.array;
+#endif
         info.req_ie = req_ie;
         info.req_ie_len = ind->assoc_req_ie_len;
         info.resp_ie = rsp_ie;
@@ -1376,10 +1384,10 @@ static msg_cb_fct *msg_hdlrs[] = {
 /**
  *
  */
-void ecrnx_rx_handle_msg(struct ecrnx_hw *ecrnx_hw, struct ipc_e2a_msg *msg)
+__maybe_unused static void ecrnx_rx_handle_msg(struct ecrnx_hw *ecrnx_hw, struct ipc_e2a_msg *msg)
 {
 
-    if(!ecrnx_hw || !msg || !(&ecrnx_hw->cmd_mgr))
+    if(!ecrnx_hw || !msg)
     {
         ecrnx_printk_err("ecrnx_rx_handle_msg:receive msg info error \n");
         return;

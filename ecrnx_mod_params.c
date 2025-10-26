@@ -1009,7 +1009,7 @@ static void ecrnx_set_he_capa(struct ecrnx_hw *ecrnx_hw, struct wiphy *wiphy)
                                            dcm_max_ru */;
     he_cap->he_cap_elem.phy_cap_info[9] |= IEEE80211_HE_PHY_CAP9_RX_FULL_BW_SU_USING_MU_WITH_COMP_SIGB |
                                            IEEE80211_HE_PHY_CAP9_RX_FULL_BW_SU_USING_MU_WITH_NON_COMP_SIGB |
-                                           IEEE80211_HE_PHY_CAP9_NOMIMAL_PKT_PADDING_16US;
+                                           IEEE80211_HE_PHY_CAP9_NOMINAL_PKT_PADDING_16US;
 #if 0
     if (__MDM_VERSION(phy_vers) > 30) {
         he_cap->he_cap_elem.phy_cap_info[6] |= IEEE80211_HE_PHY_CAP6_PARTIAL_BW_EXT_RANGE;
@@ -1197,8 +1197,11 @@ void ecrnx_custregd(struct ecrnx_hw *ecrnx_hw, struct wiphy *wiphy)
 #if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 0, 0)
     if (!ecrnx_hw->mod_params->custregd)
         return;
-
+#ifdef ECRNX_MODERN_KERNEL
+    wiphy->regulatory_flags |= REGULATORY_STRICT_REG;
+#else
     wiphy->regulatory_flags |= REGULATORY_IGNORE_STALE_KICKOFF;
+#endif
     wiphy->regulatory_flags |= REGULATORY_WIPHY_SELF_MANAGED;
 
     rtnl_lock();

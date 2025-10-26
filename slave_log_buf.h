@@ -32,6 +32,9 @@ uint32_t ring_buffer_init(struct ring_buffer* ring_buf, uint32_t size);
 void ring_buffer_deinit(struct ring_buffer *ring_buf);
 uint32_t ring_buffer_scrolling_display(struct ring_buffer *ring_buf, char show);
 uint32_t ring_buffer_len(const struct ring_buffer *ring_buf);
+uint32_t __ring_buffer_len(const struct ring_buffer *ring_buf);
+uint32_t __ring_buffer_get(struct ring_buffer *ring_buf, void * buffer, uint32_t size);
+uint32_t __ring_buffer_put(struct ring_buffer *ring_buf, void *buffer, uint32_t size);
 
 
 #endif

@@ -674,6 +674,21 @@ void ecrnx_chanctx_link(struct ecrnx_vif *vif, u8 idx,
                         struct cfg80211_chan_def *chandef);
 void ecrnx_chanctx_unlink(struct ecrnx_vif *vif);
 int  ecrnx_chanctx_valid(struct ecrnx_hw *ecrnx_hw, u8 idx);
+void ecrnx_set_ipc_env_msg_flag(struct ecrnx_hw *ecrnx_hw);
+void ecrnx_release_list(struct ecrnx_hw *ecrnx_hw, bool is_exit);
+void dump_cmd_mgr_queue(struct ecrnx_cmd_mgr *cmd_mgr);
+void ecrnx_txq_flush(struct ecrnx_hw *ecrnx_hw, struct ecrnx_txq *txq);
+void ecrnx_txq_start_cleanup_timer(struct ecrnx_hw *ecrnx_hw, struct ecrnx_sta *sta);
+int chtofreq(int chan);
+bool is_bss_support_g(struct mac_rateset *rateset);
+uint8_t ecrnx_get_bss_mode(uint32_t bss_cap, struct mac_rateset *rateset);
+void priv_copy_data_wakeup(struct ecrnx_hw *ecrnx_hw, struct sk_buff *skb);
+uint8_t get_rssi_to_max_rate(uint8_t rate[], int rssi);
+uint32_t calc_crc32(uint8_t Mode, uint8_t *pMsg, uint32_t Len);
+void ecrnx_update_mesh_power_mode(struct ecrnx_vif *vif);
+void ecrnx_save_assoc_info_for_ft(struct ecrnx_vif *vif,struct cfg80211_connect_params *sme);
+int ecrnx_get_cal_result(struct ecrnx_hw *ecrnx_hw);
+void ecrnx_he_init(void);
 
 static inline bool is_multicast_sta(int sta_idx)
 {
@@ -1149,3 +1164,6 @@ static inline void ether_addr_copy(u8 *dst, const u8 *src)
 #endif
 
 #endif /* _ECRNX_DEFS_H_*/
+
+void ecrnx_rx_reord_timer_update(struct ecrnx_hw *ecrnx_hw, struct reord_cntrl *reord_cntrl, int force);
+void ecrnx_rx_reord_list_flush(struct ecrnx_hw *ecrnx_hw, struct ecrnx_vif *ecrnx_vif, struct reord_cntrl *reord_cntrl);

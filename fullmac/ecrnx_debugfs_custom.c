@@ -37,7 +37,6 @@ static long custom_sys_write(unsigned int fd, const char __user *buf, size_t cou
 {
    long ret = -EBADF;
    struct file *file = NULL;
-   mm_segment_t status;
    loff_t offset;
 
    if (!buf) {

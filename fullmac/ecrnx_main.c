@@ -38,6 +38,7 @@
 #include "ecrnx_events.h"
 #include "ecrnx_compat.h"
 #include "ecrnx_rx.h"
+#include "ecrnx_main.h"
 
 #include "ecrnx_p2p.h"
 #include "ecrnx_debugfs_custom.h"
@@ -593,6 +594,24 @@ static void ecrnx_csa_finish(struct work_struct *ws)
         cfg80211_disconnected(vif->ndev, 0, NULL, 0, 0, GFP_KERNEL);
 #endif
     }
+#ifdef ECRNX_MODERN_KERNEL
+    else {
+        spin_lock_bh(&ecrnx_hw->cb_lock);
+        ecrnx_chanctx_unlink(vif);
+        ecrnx_chanctx_link(vif, csa->ch_idx, &csa->chandef);
+
+        if (ecrnx_hw->cur_chanctx == csa->ch_idx) {
+            ecrnx_radar_detection_enable_on_cur_channel(ecrnx_hw);
+            ecrnx_txq_vif_start(vif, ECRNX_TXQ_STOP_CHAN, ecrnx_hw);
+        } else {
+            ecrnx_txq_vif_stop(vif, ECRNX_TXQ_STOP_CHAN, ecrnx_hw);
+        }
+
+        spin_unlock_bh(&ecrnx_hw->cb_lock);
+
+        cfg80211_ch_switch_notify(vif->ndev, &csa->chandef, 0, 0);
+}
+#else
     else {
         mutex_lock(&vif->wdev.mtx);
         __acquire(&vif->wdev.mtx);
@@ -609,6 +628,7 @@ static void ecrnx_csa_finish(struct work_struct *ws)
         mutex_unlock(&vif->wdev.mtx);
         __release(&vif->wdev.mtx);
     }
+#endif
     ecrnx_del_csa(vif);
 }
 
@@ -1192,10 +1212,30 @@ static struct wireless_dev *ecrnx_interface_add(struct ecrnx_hw *ecrnx_hw,
 
 #if LINUX_VERSION_CODE >= KERNEL_VERSION(3, 10, 0)
     if (type == NL80211_IFTYPE_AP_VLAN)
-        memcpy(ndev->dev_addr, params->macaddr, ETH_ALEN);
+        memcpy((u8 *)ndev->dev_addr, params->macaddr, ETH_ALEN);
     else 
 #endif
     {
+#ifdef ECRNX_MODERN_KERNEL
+        // For kernel 6.0+
+        u8 new_addr[ETH_ALEN];
+        memcpy(new_addr, ecrnx_hw->wiphy->perm_addr, ETH_ALEN);
+
+        if (ecrnx_hw->mod_params->custom_macrule == 0) {
+            new_addr[5] ^= vif_idx;
+        } else {
+            if (vif_idx != 0) {
+                if (new_addr[0] & 0x02) {
+                    new_addr[0] = ((new_addr[0] >> 2) ^ (vif_idx)) << 2;
+                    new_addr[0] |= 0x02;
+                } else {
+                    new_addr[0] = ((new_addr[0] >> 2) ^ (vif_idx-1)) << 2;
+                    new_addr[0] |= 0x02;
+                }
+            }
+        }
+        eth_hw_addr_set(ndev, new_addr);
+#else
         memcpy(ndev->dev_addr, ecrnx_hw->wiphy->perm_addr, ETH_ALEN);
         if (ecrnx_hw->mod_params->custom_macrule == 0)
           ndev->dev_addr[5] ^= vif_idx;
@@ -1215,6 +1255,7 @@ static struct wireless_dev *ecrnx_interface_add(struct ecrnx_hw *ecrnx_hw,
                 }
             }
         }
+#endif
     }
 
     if (params) {
@@ -1360,7 +1401,14 @@ static int ecrnx_cfg80211_del_iface(struct wiphy *wiphy, struct wireless_dev *wd
     return 0;
 }
 
+ #ifdef ECRNX_MODERN_KERNEL
+static int ecrnx_cfg80211_stop_ap(struct wiphy *wiphy,
+                                  struct net_device *dev,
+                                  unsigned int link_id);
+#else
 static int ecrnx_cfg80211_stop_ap(struct wiphy *wiphy, struct net_device *dev);
+#endif
+
 static int ecrnx_cfg80211_disconnect(struct wiphy *wiphy, struct net_device *dev,
                                     u16 reason_code);
 
@@ -1383,7 +1431,11 @@ static int ecrnx_cfg80211_change_iface(struct wiphy *wiphy,
     {
         if((ECRNX_VIF_TYPE(vif) == NL80211_IFTYPE_AP) || (ECRNX_VIF_TYPE(vif) == NL80211_IFTYPE_P2P_GO))
         {
+#ifdef ECRNX_MODERN_KERNEL
+            ecrnx_cfg80211_stop_ap(wiphy, dev, 0);
+#else
             ecrnx_cfg80211_stop_ap(wiphy, dev);
+#endif        
         }
         else if((ECRNX_VIF_TYPE(vif) == NL80211_IFTYPE_STATION) || (ECRNX_VIF_TYPE(vif) == NL80211_IFTYPE_P2P_CLIENT))
         {
@@ -1543,9 +1595,22 @@ out:
  * @add_key: add a key with the given parameters. @mac_addr will be %NULL
  *	when adding a group key.
  */
-static int ecrnx_cfg80211_add_key(struct wiphy *wiphy, struct net_device *netdev,
-                                 u8 key_index, bool pairwise, const u8 *mac_addr,
-                                 struct key_params *params)
+#ifdef ECRNX_MODERN_KERNEL
+static int ecrnx_cfg80211_add_key(struct wiphy *wiphy,
+                                  struct net_device *netdev,
+                                  int link_id,
+                                  u8 key_index,
+                                  bool pairwise,
+                                  const u8 *mac_addr,
+                                  struct key_params *params)
+#else
+static int ecrnx_cfg80211_add_key(struct wiphy *wiphy,
+                                  struct net_device *netdev,
+                                  u8 key_index,
+                                  bool pairwise,
+                                  const u8 *mac_addr,
+                                  struct key_params *params)
+#endif
 {
     struct ecrnx_hw *ecrnx_hw = wiphy_priv(wiphy);
     struct ecrnx_vif *vif = netdev_priv(netdev);
@@ -1640,10 +1705,26 @@ static int ecrnx_cfg80211_add_key(struct wiphy *wiphy, struct net_device *netdev
  *	not possible to retrieve the key, -ENOENT if it doesn't exist.
  *
  */
-static int ecrnx_cfg80211_get_key(struct wiphy *wiphy, struct net_device *netdev,
-                                 u8 key_index, bool pairwise, const u8 *mac_addr,
-                                 void *cookie,
-                                 void (*callback)(void *cookie, struct key_params*))
+#ifdef ECRNX_MODERN_KERNEL
+static int ecrnx_cfg80211_get_key(struct wiphy *wiphy,
+                                  struct net_device *netdev,
+                                  int link_id,
+                                  u8 key_index,
+                                  bool pairwise,
+                                  const u8 *mac_addr,
+                                  void *cookie,
+                                  void (*callback)(void *cookie,
+                                                   struct key_params *))
+#else
+static int ecrnx_cfg80211_get_key(struct wiphy *wiphy,
+                                  struct net_device *netdev,
+                                  u8 key_index,
+                                  bool pairwise,
+                                  const u8 *mac_addr,
+                                  void *cookie,
+                                  void (*callback)(void *cookie,
+                                                   struct key_params *))
+#endif
 {
     ecrnx_printk_cfg(ECRNX_FN_ENTRY_STR);
 
@@ -1655,8 +1736,20 @@ static int ecrnx_cfg80211_get_key(struct wiphy *wiphy, struct net_device *netdev
  * @del_key: remove a key given the @mac_addr (%NULL for a group key)
  *	and @key_index, return -ENOENT if the key doesn't exist.
  */
-static int ecrnx_cfg80211_del_key(struct wiphy *wiphy, struct net_device *netdev,
-                                 u8 key_index, bool pairwise, const u8 *mac_addr)
+#ifdef ECRNX_MODERN_KERNEL
+static int ecrnx_cfg80211_del_key(struct wiphy *wiphy,
+                                  struct net_device *netdev,
+                                  int link_id,
+                                  u8 key_index,
+                                  bool pairwise,
+                                  const u8 *mac_addr)
+#else
+static int ecrnx_cfg80211_del_key(struct wiphy *wiphy,
+                                  struct net_device *netdev,
+                                  u8 key_index,
+                                  bool pairwise,
+                                  const u8 *mac_addr)
+#endif
 {
     struct ecrnx_hw *ecrnx_hw = wiphy_priv(wiphy);
     struct ecrnx_vif *vif = netdev_priv(netdev);
@@ -1682,9 +1775,18 @@ static int ecrnx_cfg80211_del_key(struct wiphy *wiphy, struct net_device *netdev
 /**
  * @set_default_key: set the default key on an interface
  */
+ #ifdef ECRNX_MODERN_KERNEL
+static int ecrnx_cfg80211_set_default_key(struct wiphy *wiphy,
+                                          struct net_device *netdev,
+                                          int link_id,
+                                          u8 key_index,
+                                          bool unicast,
+                                          bool multicast)
+#else
 static int ecrnx_cfg80211_set_default_key(struct wiphy *wiphy,
                                          struct net_device *netdev,
                                          u8 key_index, bool unicast, bool multicast)
+#endif
 {
     ecrnx_printk_cfg(ECRNX_FN_ENTRY_STR);
 
@@ -1694,9 +1796,16 @@ static int ecrnx_cfg80211_set_default_key(struct wiphy *wiphy,
 /**
  * @set_default_mgmt_key: set the default management frame key on an interface
  */
+ #ifdef ECRNX_MODERN_KERNEL
+static int ecrnx_cfg80211_set_default_mgmt_key(struct wiphy *wiphy,
+                                               struct net_device *netdev,
+                                               int link_id,
+                                               u8 key_index)
+#else
 static int ecrnx_cfg80211_set_default_mgmt_key(struct wiphy *wiphy,
                                               struct net_device *netdev,
                                               u8 key_index)
+#endif
 {
     return 0;
 }
@@ -1735,7 +1844,13 @@ static int ecrnx_cfg80211_connect(struct wiphy *wiphy, struct net_device *dev,
         key_params.key_len = sme->key_len;
         key_params.seq_len = 0;
         key_params.cipher = sme->crypto.cipher_group;
-        ecrnx_cfg80211_add_key(wiphy, dev, sme->key_idx, false, NULL, &key_params);
+#ifdef ECRNX_MODERN_KERNEL
+    /* Kernel ≥ 5.19: add link_id (use 0 for single-link) */
+    ecrnx_cfg80211_add_key(wiphy, dev, 0, sme->key_idx, false, NULL, &key_params);
+#else
+    /* Older kernels: original 6-argument version */
+    ecrnx_cfg80211_add_key(wiphy, dev, sme->key_idx, false, NULL, &key_params);
+#endif
     }
 #if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 17, 0)
     else if ((sme->auth_type == NL80211_AUTHTYPE_SAE) &&
@@ -1854,8 +1969,13 @@ static int ecrnx_cfg80211_add_station(struct wiphy *wiphy, struct net_device *de
             sta->vif_idx = ecrnx_vif->vif_index;
             sta->vlan_idx = sta->vif_idx;
             sta->qos = (params->sta_flags_set & BIT(NL80211_STA_FLAG_WME)) != 0;
+#ifdef ECRNX_MODERN_KERNEL
+            sta->ht = params->link_sta_params.ht_capa ? 1 : 0;
+            sta->vht = params->link_sta_params.vht_capa ? 1 : 0;
+#else
             sta->ht = params->ht_capa ? 1 : 0;
             sta->vht = params->vht_capa ? 1 : 0;
+#endif
             sta->acm = 0;
             sta->listen_interval = params->listen_interval;
 #if LINUX_VERSION_CODE >= KERNEL_VERSION(3, 10, 0)
@@ -2109,8 +2229,13 @@ static int ecrnx_cfg80211_change_station(struct wiphy *wiphy, struct net_device 
                     sta->vif_idx = ecrnx_vif->vif_index;
                     sta->vlan_idx = sta->vif_idx;
                     sta->qos = (params->sta_flags_set & BIT(NL80211_STA_FLAG_WME)) != 0;
+#ifdef ECRNX_MODERN_KERNEL
+                    sta->ht = params->link_sta_params.ht_capa ? 1 : 0;
+                    sta->vht = params->link_sta_params.vht_capa ? 1 : 0;
+#else
                     sta->ht = params->ht_capa ? 1 : 0;
                     sta->vht = params->vht_capa ? 1 : 0;
+#endif
                     sta->acm = 0;
                     for (tid = 0; tid < NX_NB_TXQ_PER_STA; tid++) {
                         int uapsd_bit = ecrnx_hwq2uapsd[ecrnx_tid2hwq[tid]];
@@ -2328,8 +2453,14 @@ static int ecrnx_cfg80211_start_ap(struct wiphy *wiphy, struct net_device *dev,
  * @change_beacon: Change the beacon parameters for an access point mode
  *	interface. This should reject the call when AP mode wasn't started.
  */
+ #ifdef ECRNX_MODERN_KERNEL
+static int ecrnx_cfg80211_change_beacon(struct wiphy *wiphy,
+                                        struct net_device *dev,
+                                        struct cfg80211_ap_update *info)
+#else
 static int ecrnx_cfg80211_change_beacon(struct wiphy *wiphy, struct net_device *dev,
                                        struct cfg80211_beacon_data *info)
+#endif
 {
     struct ecrnx_hw *ecrnx_hw = wiphy_priv(wiphy);
     struct ecrnx_vif *vif = netdev_priv(dev);
@@ -2341,7 +2472,12 @@ static int ecrnx_cfg80211_change_beacon(struct wiphy *wiphy, struct net_device *
     ecrnx_printk_cfg(ECRNX_FN_ENTRY_STR);
 
     // Build the beacon
+#ifdef ECRNX_MODERN_KERNEL
+    /* In 6.8+, cfg80211_ap_update embeds a cfg80211_beacon_data */
+    buf = ecrnx_build_bcn(bcn, &info->beacon);
+#else
     buf = ecrnx_build_bcn(bcn, info);
+#endif
     if (!buf)
         return -ENOMEM;
 
@@ -2362,7 +2498,13 @@ static int ecrnx_cfg80211_change_beacon(struct wiphy *wiphy, struct net_device *
 /**
  * * @stop_ap: Stop being an AP, including stopping beaconing.
  */
+ #ifdef ECRNX_MODERN_KERNEL
+static int ecrnx_cfg80211_stop_ap(struct wiphy *wiphy,
+                                  struct net_device *dev,
+                                  unsigned int link_id)
+#else
 static int ecrnx_cfg80211_stop_ap(struct wiphy *wiphy, struct net_device *dev)
+#endif
 {
     struct ecrnx_hw *ecrnx_hw = wiphy_priv(wiphy);
     struct ecrnx_vif *ecrnx_vif = netdev_priv(dev);
@@ -2780,9 +2922,17 @@ static int ecrnx_cfg80211_dump_survey(struct wiphy *wiphy, struct net_device *ne
  *	For monitor interfaces, it should return %NULL unless there's a single
  *	current monitoring channel.
  */
+ #ifdef ECRNX_MODERN_KERNEL
+int ecrnx_cfg80211_get_channel(struct wiphy *wiphy,
+                                      struct wireless_dev *wdev,
+                                      unsigned int link_id,
+                                      struct cfg80211_chan_def *chandef)
+#else
 int ecrnx_cfg80211_get_channel(struct wiphy *wiphy,
                                      struct wireless_dev *wdev,
-                                     struct cfg80211_chan_def *chandef) {
+                                     struct cfg80211_chan_def *chandef) 
+#endif
+{
     struct ecrnx_hw *ecrnx_hw = wiphy_priv(wiphy);
     struct ecrnx_vif *ecrnx_vif = container_of(wdev, struct ecrnx_vif, wdev);
     struct ecrnx_chanctx *ctxt;
@@ -3203,10 +3353,24 @@ static int ecrnx_cfg80211_channel_switch(struct wiphy *wiphy,
 /*
  * @tdls_mgmt: prepare TDLS action frame packets and forward them to FW
  */
+ #ifdef ECRNX_MODERN_KERNEL
+static int ecrnx_cfg80211_tdls_mgmt(struct wiphy *wiphy,
+                                    struct net_device *dev,
+                                    const u8 *peer,
+                                    int link_id,
+                                    u8 action_code,
+                                    u8 dialog_token,
+                                    u16 status_code,
+                                    u32 peer_capability,
+                                    bool initiator,
+                                    const u8 *buf,
+                                    size_t len)
+#else
 static int ecrnx_cfg80211_tdls_mgmt(struct wiphy *wiphy, struct net_device *dev,
                         const u8 *peer, u8 action_code,  u8 dialog_token,
                         u16 status_code, u32 peer_capability,
                         bool initiator, const u8 *buf, size_t len)
+#endif
 {
     struct ecrnx_hw *ecrnx_hw = wiphy_priv(wiphy);
     struct ecrnx_vif *ecrnx_vif = netdev_priv(dev);
@@ -3245,7 +3409,7 @@ static int ecrnx_cfg80211_tdls_mgmt(struct wiphy *wiphy, struct net_device *dev,
             ecrnx_printk_err("%s: only one TDLS link is supported!\n", __func__);
             status_code = WLAN_STATUS_REQUEST_DECLINED;
         }
-        /* fall-through */
+        fallthrough;
     case WLAN_TDLS_SETUP_REQUEST:
     case WLAN_TDLS_TEARDOWN:
     case WLAN_TDLS_DISCOVERY_REQUEST:

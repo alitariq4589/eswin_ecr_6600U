@@ -39,5 +39,9 @@ extern unsigned int offset;
 
 void localtime(struct tm *stTm, unsigned int time);
 bool fw_check_head(struct eswin *tr);
+unsigned long long parse_data(struct eswin *tr,unsigned char size);
+uint8_t parse_fw_info(struct eswin *tr, bin_head_data *phead);
+bool fw_crc_check(struct eswin *tr,bin_head_data head);
+bool fw_magic_check(struct eswin *tr,bin_head_data head);
 
 #endif

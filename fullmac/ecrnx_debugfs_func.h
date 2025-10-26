@@ -169,9 +169,16 @@ struct ring_buffer *usb_dbg_buf_get(void);
 
 int ecrnx_cfg80211_dump_station(struct wiphy *wiphy, struct net_device *dev,
                                       int idx, u8 *mac, struct station_info *sinfo);
+#ifdef ECRNX_MODERN_KERNEL
+int ecrnx_cfg80211_get_channel(struct wiphy *wiphy,
+                                      struct wireless_dev *wdev,
+                                      unsigned int link_id,
+                                      struct cfg80211_chan_def *chandef);
+#else
 int ecrnx_cfg80211_get_channel(struct wiphy *wiphy,
                                      struct wireless_dev *wdev,
                                      struct cfg80211_chan_def *chandef);
+#endif
 int ecrnx_log_level_get(LOG_CTL_ST *log);
 int ecrnx_fw_log_level_set(u32 level, u32 dir);
 bool ecrnx_log_host_enable(void);
@@ -207,5 +214,8 @@ int cli_rf_txgain(uint32_t index, uint8_t *param);
 int cli_rf_rxgain(uint32_t index, uint8_t *param);
 int cli_rf_chan(uint32_t index, uint8_t *param);
 int cli_cmd_parse(uint8_t *cmd);
+uint8_t parse_fw_info(struct eswin *tr, bin_head_data *phead);
+bool fw_crc_check(struct eswin *tr,bin_head_data head);
+bool fw_magic_check(struct eswin *tr,bin_head_data head);
 
 #endif

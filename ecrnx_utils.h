@@ -198,4 +198,10 @@ void ecrnx_umh_done(struct ecrnx_hw *ecrnx_hw);
 void ecrnx_ipc_sta_buffer_init(struct ecrnx_hw *ecrnx_hw, int sta_idx);
 void ecrnx_ipc_sta_buffer(struct ecrnx_hw *ecrnx_hw, struct ecrnx_sta *sta, int tid, int size);
 
+// static int ecrnx_ipc_skb_elem_allocs(struct ecrnx_hw *ecrnx_hw,
+//                                  struct ecrnx_ipc_skb_elem *elem, size_t skb_size,
+//                                  enum dma_data_direction dir,
+//                                  int (*push)(struct ipc_host_env_tag *,
+//                                              void *, uint32_t));
+
 #endif /* _ECRNX_IPC_UTILS_H_ */

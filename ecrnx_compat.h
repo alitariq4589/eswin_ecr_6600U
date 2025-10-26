@@ -52,7 +52,7 @@
 
 #if LINUX_VERSION_CODE > KERNEL_VERSION(5, 11, 0)
 #define cfg80211_ch_switch_started_notify(dev, chandef, count) \
-    cfg80211_ch_switch_started_notify(dev, chandef, count, 1)
+    cfg80211_ch_switch_started_notify(dev, chandef, 0, count, true, 0);
 #endif
 
 #if LINUX_VERSION_CODE < KERNEL_VERSION(5, 1, 0)
@@ -527,4 +527,21 @@ typedef __s64 time64_t;
     __setup_timer(timer, (void (*)(unsigned long))callback, (unsigned long)timer, flags)
 #endif // 4.14
 
+#if LINUX_VERSION_CODE >= KERNEL_VERSION(6,0,0)
+#define ECRNX_MODERN_KERNEL
+#endif
+
 #endif /* _ECRNX_COMPAT_H_ */
+
+int ecrnx_rsne_to_connect_params(const struct ecrnx_element *rsne, struct cfg80211_connect_params *sme);
+u16 ecrnx_select_queue(struct net_device *dev, struct sk_buff *skb,
+                      struct net_device *sb_dev);
+int ecrnx_ioctl(struct net_device *dev, struct ifreq *rq, int cmd);
+int ecrnx_cfg80211_set_channel(struct wiphy *wiphy,
+				 struct net_device *netdev,
+				 struct ieee80211_channel *chan,
+				 enum nl80211_channel_type channel_type);
+
+int ecrnx_cfg80211_probe_client(struct wiphy *wiphy, struct net_device *dev,
+            const u8 *peer, u64 *cookie);
+

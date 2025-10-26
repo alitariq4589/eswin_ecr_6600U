@@ -1,0 +1,308 @@
+/bin/sh: 1: test: Illegal number: .
+Makefile:151: "select chip is 6600."
+Makefile:153: "select slave is used CEVA RTOS."
+rm -rf *.ko
+make -C /lib/modules/6.8.0-85-generic/build O=/lib/modules/6.8.0-85-generic/build M=/home/user0/.WORKDIR/eswin_wifi/eswin_6600u modules
+make[1]: Entering directory '/usr/src/linux-headers-6.8.0-85-generic'
+warning: the compiler differs from the one used to build the kernel
+  The kernel was built by: x86_64-linux-gnu-gcc-12 (Ubuntu 12.3.0-1ubuntu1~22.04.2) 12.3.0
+  You are using:           gcc-12 (Ubuntu 12.3.0-1ubuntu1~22.04.2) 12.3.0
+/bin/sh: 1: test: Illegal number: 6.8
+  CC [M]  /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/ecrnx_msg_tx.o
+  CC [M]  /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/ecrnx_msg_rx.o
+  CC [M]  /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/ecrnx_utils.o
+/home/user0/.WORKDIR/eswin_wifi/eswin_6600u/ecrnx_utils.c:98:12: warning: ‘ecrnx_ipc_skb_elem_allocs’ defined but not used [-Wunused-function]
+   98 | static int ecrnx_ipc_skb_elem_allocs(struct ecrnx_hw *ecrnx_hw,
+      |            ^~~~~~~~~~~~~~~~~~~~~~~~~
+  CC [M]  /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/ecrnx_cmds.o
+  CC [M]  /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/ecrnx_cfgfile.o
+  CC [M]  /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/ecrnx_strs.o
+  CC [M]  /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/ecrnx_txq.o
+  CC [M]  /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/ecrnx_mod_params.o
+  CC [M]  /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/ecrnx_platform.o
+  CC [M]  /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/ipc_host.o
+  CC [M]  /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/hal_desc.o
+  CC [M]  /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/ecrnx_iwpriv.o
+  CC [M]  /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/fw_head_check.o
+  CC [M]  /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/slave_log_buf.o
+  CC [M]  /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/fullmac/ecrnx_tdls.o
+  CC [M]  /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/fullmac/ecrnx_mesh.o
+  CC [M]  /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/fullmac/ecrnx_main.o
+  CC [M]  /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/fullmac/ecrnx_rx.o
+In file included from ./include/linux/string.h:292,
+                 from ./include/linux/dma-mapping.h:7,
+                 from /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/fullmac/ecrnx_rx.c:10:
+/home/user0/.WORKDIR/eswin_wifi/eswin_6600u/fullmac/ecrnx_rx.c: In function ‘ecrnx_rx_reord_sta_init’:
+/home/user0/.WORKDIR/eswin_wifi/eswin_6600u/fullmac/ecrnx_rx.c:1371:83: warning: expression does not compute the number of elements in this array; element type is ‘short int’, not ‘int’ [-Wsizeof-array-div]
+ 1371 |             memset(&reord_cntrl->skip_sn, 0xffffffff, sizeof(reord_cntrl->skip_sn)/sizeof(int));
+      |                                                                                   ^
+./include/linux/fortify-string.h:473:42: note: in definition of macro ‘__fortify_memset_chk’
+  473 |         size_t __fortify_size = (size_t)(size);                         \
+      |                                          ^~~~
+/home/user0/.WORKDIR/eswin_wifi/eswin_6600u/fullmac/ecrnx_rx.c:1371:13: note: in expansion of macro ‘memset’
+ 1371 |             memset(&reord_cntrl->skip_sn, 0xffffffff, sizeof(reord_cntrl->skip_sn)/sizeof(int));
+      |             ^~~~~~
+/home/user0/.WORKDIR/eswin_wifi/eswin_6600u/fullmac/ecrnx_rx.c:1371:83: note: add parentheses around the second ‘sizeof’ to silence this warning
+ 1371 |             memset(&reord_cntrl->skip_sn, 0xffffffff, sizeof(reord_cntrl->skip_sn)/sizeof(int));
+      |                                                                                   ^
+./include/linux/fortify-string.h:473:42: note: in definition of macro ‘__fortify_memset_chk’
+  473 |         size_t __fortify_size = (size_t)(size);                         \
+      |                                          ^~~~
+/home/user0/.WORKDIR/eswin_wifi/eswin_6600u/fullmac/ecrnx_rx.c:1371:13: note: in expansion of macro ‘memset’
+ 1371 |             memset(&reord_cntrl->skip_sn, 0xffffffff, sizeof(reord_cntrl->skip_sn)/sizeof(int));
+      |             ^~~~~~
+/home/user0/.WORKDIR/eswin_wifi/eswin_6600u/fullmac/ecrnx_rx.c: At top level:
+/home/user0/.WORKDIR/eswin_wifi/eswin_6600u/fullmac/ecrnx_rx.c:1382:5: warning: no previous prototype for ‘ecrnx_rx_reord_tid_flush’ [-Wmissing-prototypes]
+ 1382 | int ecrnx_rx_reord_tid_flush(struct ecrnx_hw *ecrnx_hw, struct ecrnx_vif *ecrnx_vif, struct sk_buff *skb, u8 sta_idx, u8 tid)
+      |     ^~~~~~~~~~~~~~~~~~~~~~~~
+/home/user0/.WORKDIR/eswin_wifi/eswin_6600u/fullmac/ecrnx_rx.c:1510:5: warning: no previous prototype for ‘ecrnx_rx_reord_sn_check’ [-Wmissing-prototypes]
+ 1510 | int ecrnx_rx_reord_sn_check(struct reord_cntrl *reord_cntrl, u16 sn)
+      |     ^~~~~~~~~~~~~~~~~~~~~~~
+/home/user0/.WORKDIR/eswin_wifi/eswin_6600u/fullmac/ecrnx_rx.c:1535:5: warning: no previous prototype for ‘ecrnx_rx_reord_msdu_insert’ [-Wmissing-prototypes]
+ 1535 | int ecrnx_rx_reord_msdu_insert(struct reord_cntrl *reord_cntrl, struct reord_msdu_info *pmsdu)
+      |     ^~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/user0/.WORKDIR/eswin_wifi/eswin_6600u/fullmac/ecrnx_rx.c:1561:6: warning: no previous prototype for ‘ecrnx_rx_reord_check’ [-Wmissing-prototypes]
+ 1561 | void ecrnx_rx_reord_check(struct ecrnx_hw *ecrnx_hw, struct ecrnx_vif *ecrnx_vif, struct hw_rxhdr *hw_rxhdr, struct sk_buff *skb, struct rxu_stat_mm* orignal_rxu_state)
+      |      ^~~~~~~~~~~~~~~~~~~~
+/home/user0/.WORKDIR/eswin_wifi/eswin_6600u/fullmac/ecrnx_rx.c:1652:4: warning: no previous prototype for ‘ecrnx_rx_agg_data_ind’ [-Wmissing-prototypes]
+ 1652 | u8 ecrnx_rx_agg_data_ind(struct ecrnx_hw *ecrnx_hw, u16_l status, struct sk_buff* skb, int msdu_offset)
+      |    ^~~~~~~~~~~~~~~~~~~~~
+/home/user0/.WORKDIR/eswin_wifi/eswin_6600u/fullmac/ecrnx_rx.c:2211:5: warning: no previous prototype for ‘ecrnx_data_cfm_callback’ [-Wmissing-prototypes]
+ 2211 | int ecrnx_data_cfm_callback(void *priv, void *host_id)
+      |     ^~~~~~~~~~~~~~~~~~~~~~~
+/home/user0/.WORKDIR/eswin_wifi/eswin_6600u/fullmac/ecrnx_rx.c:2229:5: warning: no previous prototype for ‘ecrnx_msg_cfm_callback’ [-Wmissing-prototypes]
+ 2229 | int ecrnx_msg_cfm_callback(void *priv, void *host_id)
+      |     ^~~~~~~~~~~~~~~~~~~~~~
+In function ‘fortify_memcpy_chk’,
+    inlined from ‘ecrnx_rx_add_rtap_hdr’ at /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/fullmac/ecrnx_rx.c:898:9:
+./include/linux/fortify-string.h:542:25: warning: call to ‘__write_overflow_field’ declared with attribute warning: detected write beyond size of field (1st parameter); maybe use struct_group()? [-Wattribute-warning]
+  542 |                         __write_overflow_field(p_size_field, size);
+      |                         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  CC [M]  /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/fullmac/ecrnx_tx.o
+/home/user0/.WORKDIR/eswin_wifi/eswin_6600u/fullmac/ecrnx_tx.c:1649:6: warning: no previous prototype for ‘ecrnx_tx_retry_sdio’ [-Wmissing-prototypes]
+ 1649 | void ecrnx_tx_retry_sdio(struct ecrnx_hw *ecrnx_hw, struct sk_buff *skb,
+      |      ^~~~~~~~~~~~~~~~~~~
+  CC [M]  /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/fullmac/ecrnx_calibration_data.o
+  CC [M]  /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/sdio/sdio.o
+/home/user0/.WORKDIR/eswin_wifi/eswin_6600u/sdio/sdio.c:154:6: warning: no previous prototype for ‘debugfs_sdio_init’ [-Wmissing-prototypes]
+  154 | void debugfs_sdio_init(void)
+      |      ^~~~~~~~~~~~~~~~~
+/home/user0/.WORKDIR/eswin_wifi/eswin_6600u/sdio/sdio.c:160:6: warning: no previous prototype for ‘debug_sdio_rx_callback’ [-Wmissing-prototypes]
+  160 | void debug_sdio_rx_callback(struct sk_buff *skb)
+      |      ^~~~~~~~~~~~~~~~~~~~~~
+/home/user0/.WORKDIR/eswin_wifi/eswin_6600u/sdio/sdio.c:507:6: warning: no previous prototype for ‘dump_sdio_buf’ [-Wmissing-prototypes]
+  507 | void dump_sdio_buf(struct tx_buff_node *node)
+      |      ^~~~~~~~~~~~~
+/home/user0/.WORKDIR/eswin_wifi/eswin_6600u/sdio/sdio.c: In function ‘sdio_raw_write’:
+/home/user0/.WORKDIR/eswin_wifi/eswin_6600u/sdio/sdio.c:618:51: warning: passing argument 3 of ‘sdio_writesb’ discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  618 |                 sdio_writesb(tr_sdio->func, 0x8C, data,  len);
+      |                                                   ^~~~
+In file included from /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/sdio/sdio.c:15:
+./include/linux/mmc/sdio_func.h:162:15: note: expected ‘void *’ but argument is of type ‘const void *’
+  162 |         void *src, int count);
+      |         ~~~~~~^~~
+/home/user0/.WORKDIR/eswin_wifi/eswin_6600u/sdio/sdio.c:623:67: warning: passing argument 3 of ‘sdio_writesb’ discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  623 |                 ret = sdio_writesb(tr_sdio->func, SDIO_ADDR_DATA, data,  len);
+      |                                                                   ^~~~
+./include/linux/mmc/sdio_func.h:162:15: note: expected ‘void *’ but argument is of type ‘const void *’
+  162 |         void *src, int count);
+      |         ~~~~~~^~~
+/home/user0/.WORKDIR/eswin_wifi/eswin_6600u/sdio/sdio.c: At top level:
+/home/user0/.WORKDIR/eswin_wifi/eswin_6600u/sdio/sdio.c:738:6: warning: no previous prototype for ‘sdio_need_fw_download’ [-Wmissing-prototypes]
+  738 | bool sdio_need_fw_download(void)
+      |      ^~~~~~~~~~~~~~~~~~~~~
+/home/user0/.WORKDIR/eswin_wifi/eswin_6600u/sdio/sdio.c:744:6: warning: no previous prototype for ‘sdio_reset_func2’ [-Wmissing-prototypes]
+  744 | void sdio_reset_func2(void)
+      |      ^~~~~~~~~~~~~~~~
+  CC [M]  /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/sdio/ecrnx_sdio.o
+/home/user0/.WORKDIR/eswin_wifi/eswin_6600u/sdio/ecrnx_sdio.c: In function ‘sdio_host_msgack_handler’:
+/home/user0/.WORKDIR/eswin_wifi/eswin_6600u/sdio/ecrnx_sdio.c:270:41: warning: passing argument 2 of ‘env->cb.recv_msgack_ind’ makes pointer from integer without a cast [-Wint-conversion]
+  270 |     env->cb.recv_msgack_ind(env->pthis, hostid);
+      |                                         ^~~~~~
+      |                                         |
+      |                                         uint64_t {aka long long unsigned int}
+/home/user0/.WORKDIR/eswin_wifi/eswin_6600u/sdio/ecrnx_sdio.c:270:41: note: expected ‘void *’ but argument is of type ‘uint64_t’ {aka ‘long long unsigned int’}
+/home/user0/.WORKDIR/eswin_wifi/eswin_6600u/sdio/ecrnx_sdio.c: In function ‘sdio_host_tx_cfm_handler’:
+/home/user0/.WORKDIR/eswin_wifi/eswin_6600u/sdio/ecrnx_sdio.c:318:46: warning: passing argument 2 of ‘env->cb.send_data_cfm’ makes pointer from integer without a cast [-Wint-conversion]
+  318 |     return env->cb.send_data_cfm(env->pthis, host_id);
+      |                                              ^~~~~~~
+      |                                              |
+      |                                              u64_l {aka long long unsigned int}
+/home/user0/.WORKDIR/eswin_wifi/eswin_6600u/sdio/ecrnx_sdio.c:318:46: note: expected ‘void *’ but argument is of type ‘u64_l’ {aka ‘long long unsigned int’}
+/home/user0/.WORKDIR/eswin_wifi/eswin_6600u/sdio/ecrnx_sdio.c: At top level:
+/home/user0/.WORKDIR/eswin_wifi/eswin_6600u/sdio/ecrnx_sdio.c:281:12: warning: ‘sdio_host_dbg_handler’ defined but not used [-Wunused-function]
+  281 | static int sdio_host_dbg_handler(struct ipc_host_env_tag *env, struct sk_buff *skb)
+      |            ^~~~~~~~~~~~~~~~~~~~~
+/home/user0/.WORKDIR/eswin_wifi/eswin_6600u/sdio/ecrnx_sdio.c:57:13: warning: ‘sdio_rx_buf_init’ defined but not used [-Wunused-function]
+   57 | static void sdio_rx_buf_init(void)
+      |             ^~~~~~~~~~~~~~~~
+  CC [M]  /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/sdio/core.o
+/home/user0/.WORKDIR/eswin_wifi/eswin_6600u/sdio/core.c:115:6: warning: no previous prototype for ‘sdio_tx_queue_init’ [-Wmissing-prototypes]
+  115 | void sdio_tx_queue_init(struct tx_buff_queue * queue)
+      |      ^~~~~~~~~~~~~~~~~~
+/home/user0/.WORKDIR/eswin_wifi/eswin_6600u/sdio/core.c:123:6: warning: no previous prototype for ‘sdio_tx_queue_push’ [-Wmissing-prototypes]
+  123 | void sdio_tx_queue_push(struct tx_buff_queue * queue, struct tx_buff_node *node)
+      |      ^~~~~~~~~~~~~~~~~~
+/home/user0/.WORKDIR/eswin_wifi/eswin_6600u/sdio/core.c:144:22: warning: no previous prototype for ‘sdio_tx_queue_pop’ [-Wmissing-prototypes]
+  144 | struct tx_buff_node *sdio_tx_queue_pop(struct tx_buff_queue *queue)
+      |                      ^~~~~~~~~~~~~~~~~
+/home/user0/.WORKDIR/eswin_wifi/eswin_6600u/sdio/core.c:165:22: warning: no previous prototype for ‘sdio_tx_queue_peek’ [-Wmissing-prototypes]
+  165 | struct tx_buff_node *sdio_tx_queue_peek(struct tx_buff_queue *queue)
+      |                      ^~~~~~~~~~~~~~~~~~
+/home/user0/.WORKDIR/eswin_wifi/eswin_6600u/sdio/core.c:180:23: warning: no previous prototype for ‘sdio_tx_node_alloc’ [-Wmissing-prototypes]
+  180 | struct tx_buff_node * sdio_tx_node_alloc(struct eswin *tr)
+      |                       ^~~~~~~~~~~~~~~~~~
+/home/user0/.WORKDIR/eswin_wifi/eswin_6600u/sdio/core.c:200:6: warning: no previous prototype for ‘sdio_tx_node_free’ [-Wmissing-prototypes]
+  200 | void sdio_tx_node_free(struct eswin *tr, struct tx_buff_node * node)
+      |      ^~~~~~~~~~~~~~~~~
+/home/user0/.WORKDIR/eswin_wifi/eswin_6600u/sdio/core.c:212:6: warning: no previous prototype for ‘sdio_tx_pkg_queue_init’ [-Wmissing-prototypes]
+  212 | void sdio_tx_pkg_queue_init(struct tx_buff_pkg_queue * queue)
+      |      ^~~~~~~~~~~~~~~~~~~~~~
+/home/user0/.WORKDIR/eswin_wifi/eswin_6600u/sdio/core.c:220:6: warning: no previous prototype for ‘sdio_tx_pkg_queue_push’ [-Wmissing-prototypes]
+  220 | void sdio_tx_pkg_queue_push(struct tx_buff_pkg_queue * queue, struct tx_buff_pkg_node *node)
+      |      ^~~~~~~~~~~~~~~~~~~~~~
+/home/user0/.WORKDIR/eswin_wifi/eswin_6600u/sdio/core.c:238:26: warning: no previous prototype for ‘sdio_tx_pkg_queue_pop’ [-Wmissing-prototypes]
+  238 | struct tx_buff_pkg_node *sdio_tx_pkg_queue_pop(struct tx_buff_pkg_queue *queue)
+      |                          ^~~~~~~~~~~~~~~~~~~~~
+/home/user0/.WORKDIR/eswin_wifi/eswin_6600u/sdio/core.c:256:27: warning: no previous prototype for ‘sdio_tx_pkg_node_alloc’ [-Wmissing-prototypes]
+  256 | struct tx_buff_pkg_node * sdio_tx_pkg_node_alloc(struct eswin *tr)
+      |                           ^~~~~~~~~~~~~~~~~~~~~~
+/home/user0/.WORKDIR/eswin_wifi/eswin_6600u/sdio/core.c:276:6: warning: no previous prototype for ‘sdio_tx_pkg_node_free’ [-Wmissing-prototypes]
+  276 | void sdio_tx_pkg_node_free(struct eswin *tr, struct tx_buff_pkg_node * node)
+      |      ^~~~~~~~~~~~~~~~~~~~~
+/home/user0/.WORKDIR/eswin_wifi/eswin_6600u/sdio/core.c:304:6: warning: no previous prototype for ‘eswin_sdio_register_rx_cb’ [-Wmissing-prototypes]
+  304 | void eswin_sdio_register_rx_cb(struct eswin *tr, sdio_rx_cb_t cb)
+      |      ^~~~~~~~~~~~~~~~~~~~~~~~~
+/home/user0/.WORKDIR/eswin_wifi/eswin_6600u/sdio/core.c:597:6: warning: no previous prototype for ‘eswin_sdio_ops_init’ [-Wmissing-prototypes]
+  597 | void eswin_sdio_ops_init(struct eswin * tr, const struct sdio_ops * ops)
+      |      ^~~~~~~~~~~~~~~~~~~
+/home/user0/.WORKDIR/eswin_wifi/eswin_6600u/sdio/core.c:679:6: warning: no previous prototype for ‘sdio_tx_timer_handle’ [-Wmissing-prototypes]
+  679 | void sdio_tx_timer_handle(struct timer_list *time)
+      |      ^~~~~~~~~~~~~~~~~~~~
+/home/user0/.WORKDIR/eswin_wifi/eswin_6600u/sdio/core.c: In function ‘eswin_core_create’:
+/home/user0/.WORKDIR/eswin_wifi/eswin_6600u/sdio/core.c:728:1: warning: label ‘err_free_mac’ defined but not used [-Wunused-label]
+  728 | err_free_mac:
+      | ^~~~~~~~~~~~
+  CC [M]  /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/sdio/fw.o
+/home/user0/.WORKDIR/eswin_wifi/eswin_6600u/sdio/fw.c:21:6: warning: no previous prototype for ‘eswin_fw_file_download’ [-Wmissing-prototypes]
+   21 | void eswin_fw_file_download(struct eswin *tr)
+      |      ^~~~~~~~~~~~~~~~~~~~~~
+/home/user0/.WORKDIR/eswin_wifi/eswin_6600u/sdio/fw.c:116:6: warning: no previous prototype for ‘eswin_fw_file_chech’ [-Wmissing-prototypes]
+  116 | bool eswin_fw_file_chech(struct eswin *tr)
+      |      ^~~~~~~~~~~~~~~~~~~
+/home/user0/.WORKDIR/eswin_wifi/eswin_6600u/sdio/fw.c:182:6: warning: no previous prototype for ‘eswin_system_running’ [-Wmissing-prototypes]
+  182 | bool eswin_system_running(struct eswin *tr)
+      |      ^~~~~~~~~~~~~~~~~~~~
+  CC [M]  /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/eswin_port/eswin_utils.o
+/home/user0/.WORKDIR/eswin_wifi/eswin_6600u/eswin_port/eswin_utils.c:32:6: warning: no previous prototype for ‘ecrnx_send_handle_register’ [-Wmissing-prototypes]
+   32 | void ecrnx_send_handle_register(void * fn)
+      |      ^~~~~~~~~~~~~~~~~~~~~~~~~~
+  CC [M]  /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/fullmac/ecrnx_amt.o
+/home/user0/.WORKDIR/eswin_wifi/eswin_6600u/fullmac/ecrnx_amt.c:71:6: warning: no previous prototype for ‘ecrnx_amt_config_msg_send’ [-Wmissing-prototypes]
+   71 |  int ecrnx_amt_config_msg_send(void)
+      |      ^~~~~~~~~~~~~~~~~~~~~~~~~
+/home/user0/.WORKDIR/eswin_wifi/eswin_6600u/fullmac/ecrnx_amt.c:91:5: warning: no previous prototype for ‘ecrnx_amt_init’ [-Wmissing-prototypes]
+   91 | int ecrnx_amt_init(void *ecrnx_plat)
+      |     ^~~~~~~~~~~~~~
+In file included from ./include/linux/string.h:292,
+                 from ./include/linux/bitmap.h:13,
+                 from ./include/linux/cpumask.h:12,
+                 from ./include/linux/interrupt.h:8,
+                 from /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/fullmac/ecrnx_defs.h:16,
+                 from /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/fullmac/ecrnx_main.h:14,
+                 from /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/fullmac/ecrnx_amt.c:13:
+/home/user0/.WORKDIR/eswin_wifi/eswin_6600u/fullmac/ecrnx_amt.c: In function ‘ecrnx_amt_init’:
+/home/user0/.WORKDIR/eswin_wifi/eswin_6600u/fullmac/ecrnx_amt.c:114:20: warning: passing argument 1 of ‘__builtin_memset’ discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  114 |         memset(ndev->dev_addr, 0, ETH_ALEN);
+      |                ~~~~^~~~~~~~~~
+./include/linux/fortify-string.h:475:29: note: in definition of macro ‘__fortify_memset_chk’
+  475 |         __underlying_memset(p, c, __fortify_size);                      \
+      |                             ^
+/home/user0/.WORKDIR/eswin_wifi/eswin_6600u/fullmac/ecrnx_amt.c:114:9: note: in expansion of macro ‘memset’
+  114 |         memset(ndev->dev_addr, 0, ETH_ALEN);
+      |         ^~~~~~
+/home/user0/.WORKDIR/eswin_wifi/eswin_6600u/fullmac/ecrnx_amt.c:114:20: note: expected ‘void *’ but argument is of type ‘const unsigned char *’
+  114 |         memset(ndev->dev_addr, 0, ETH_ALEN);
+      |                ~~~~^~~~~~~~~~
+./include/linux/fortify-string.h:475:29: note: in definition of macro ‘__fortify_memset_chk’
+  475 |         __underlying_memset(p, c, __fortify_size);                      \
+      |                             ^
+/home/user0/.WORKDIR/eswin_wifi/eswin_6600u/fullmac/ecrnx_amt.c:114:9: note: in expansion of macro ‘memset’
+  114 |         memset(ndev->dev_addr, 0, ETH_ALEN);
+      |         ^~~~~~
+/home/user0/.WORKDIR/eswin_wifi/eswin_6600u/fullmac/ecrnx_amt.c: At top level:
+/home/user0/.WORKDIR/eswin_wifi/eswin_6600u/fullmac/ecrnx_amt.c:136:6: warning: no previous prototype for ‘ecrnx_amt_deinit’ [-Wmissing-prototypes]
+  136 | void ecrnx_amt_deinit(void)
+      |      ^~~~~~~~~~~~~~~~
+  CC [M]  /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/ecrnx_radar.o
+/home/user0/.WORKDIR/eswin_wifi/eswin_6600u/ecrnx_radar.c:900:22: warning: no previous prototype for ‘pri_detector_init’ [-Wmissing-prototypes]
+  900 | struct pri_detector *pri_detector_init(struct dfs_pattern_detector *dpd,
+      |                      ^~~~~~~~~~~~~~~~~
+  CC [M]  /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/ecrnx_debugfs.o
+/home/user0/.WORKDIR/eswin_wifi/eswin_6600u/ecrnx_debugfs.c:2206:6: warning: no previous prototype for ‘_ecrnx_dbgfs_sta_write’ [-Wmissing-prototypes]
+ 2206 | void _ecrnx_dbgfs_sta_write(struct ecrnx_debugfs *ecrnx_debugfs, uint8_t sta_idx)
+      |      ^~~~~~~~~~~~~~~~~~~~~~
+  CC [M]  /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/ecrnx_fw_dump.o
+  CC [M]  /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/ecrnx_fw_trace.o
+  CC [M]  /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/ecrnx_debug.o
+  CC [M]  /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/fullmac/ecrnx_p2p.o
+  CC [M]  /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/fullmac/ecrnx_debugfs_func.o
+/home/user0/.WORKDIR/eswin_wifi/eswin_6600u/fullmac/ecrnx_debugfs_func.c:75:6: warning: no previous prototype for ‘ecrnx_debugfs_param_send’ [-Wmissing-prototypes]
+   75 | void ecrnx_debugfs_param_send(debugfs_info_t *req)
+      |      ^~~~~~~~~~~~~~~~~~~~~~~~
+/home/user0/.WORKDIR/eswin_wifi/eswin_6600u/fullmac/ecrnx_debugfs_func.c:738:5: warning: no previous prototype for ‘cli_parse_args’ [-Wmissing-prototypes]
+  738 | int cli_parse_args(uint8_t* str, char* argv[])
+      |     ^~~~~~~~~~~~~~
+/home/user0/.WORKDIR/eswin_wifi/eswin_6600u/fullmac/ecrnx_debugfs_func.c:773:6: warning: no previous prototype for ‘argv_display’ [-Wmissing-prototypes]
+  773 | void argv_display(uint32_t argc, char* argv[])
+      |      ^~~~~~~~~~~~
+/home/user0/.WORKDIR/eswin_wifi/eswin_6600u/fullmac/ecrnx_debugfs_func.c:784:5: warning: no previous prototype for ‘_atoi’ [-Wmissing-prototypes]
+  784 | int _atoi(char *pstr)
+      |     ^~~~~
+/home/user0/.WORKDIR/eswin_wifi/eswin_6600u/fullmac/ecrnx_debugfs_func.c:819:5: warning: no previous prototype for ‘cli_check_parm_num’ [-Wmissing-prototypes]
+  819 | int cli_check_parm_num(uint32_t index, uint8_t *param)
+      |     ^~~~~~~~~~~~~~~~~~
+/home/user0/.WORKDIR/eswin_wifi/eswin_6600u/fullmac/ecrnx_debugfs_func.c:830:5: warning: no previous prototype for ‘cli_check_parm_range’ [-Wmissing-prototypes]
+  830 | int cli_check_parm_range(uint32_t start_index, uint32_t index, uint32_t argc, char* argv[])
+      |     ^~~~~~~~~~~~~~~~~~~~
+  CC [M]  /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/fullmac/ecrnx_debugfs_custom.o
+/home/user0/.WORKDIR/eswin_wifi/eswin_6600u/fullmac/ecrnx_debugfs_custom.c:66:6: warning: no previous prototype for ‘seq_reg_display_u32’ [-Wmissing-prototypes]
+   66 | void seq_reg_display_u32(struct seq_file *seq, u32 addr, u32 *reg, u32 len)
+      |      ^~~~~~~~~~~~~~~~~~~
+/home/user0/.WORKDIR/eswin_wifi/eswin_6600u/fullmac/ecrnx_debugfs_custom.c:85:6: warning: no previous prototype for ‘seq_reg_display_u8’ [-Wmissing-prototypes]
+   85 | void seq_reg_display_u8(struct seq_file *seq, u32 addr, u8 *reg, u32 len)
+      |      ^~~~~~~~~~~~~~~~~~
+/home/user0/.WORKDIR/eswin_wifi/eswin_6600u/fullmac/ecrnx_debugfs_custom.c:106:6: warning: no previous prototype for ‘read_reg_display_u32’ [-Wmissing-prototypes]
+  106 | void read_reg_display_u32(u32 addr, u32 *reg, u32 len)
+      |      ^~~~~~~~~~~~~~~~~~~~
+/home/user0/.WORKDIR/eswin_wifi/eswin_6600u/fullmac/ecrnx_debugfs_custom.c:169:6: warning: no previous prototype for ‘reg_display_u8’ [-Wmissing-prototypes]
+  169 | void reg_display_u8(u32 addr, u8 *reg, u32 len)
+      |      ^~~~~~~~~~~~~~
+/home/user0/.WORKDIR/eswin_wifi/eswin_6600u/fullmac/ecrnx_debugfs_custom.c:472:5: warning: no previous prototype for ‘ecrnx_debugfs_info_init’ [-Wmissing-prototypes]
+  472 | int ecrnx_debugfs_info_init(void      *private_data)
+      |     ^~~~~~~~~~~~~~~~~~~~~~~
+/home/user0/.WORKDIR/eswin_wifi/eswin_6600u/fullmac/ecrnx_debugfs_custom.c:698:5: warning: no previous prototype for ‘ecrnx_debugfs_hw_init’ [-Wmissing-prototypes]
+  698 | int ecrnx_debugfs_hw_init(void *private_data)
+      |     ^~~~~~~~~~~~~~~~~~~~~
+/home/user0/.WORKDIR/eswin_wifi/eswin_6600u/fullmac/ecrnx_debugfs_custom.c:837:5: warning: no previous prototype for ‘ecrnx_debugfs_wlan0_init’ [-Wmissing-prototypes]
+  837 | int ecrnx_debugfs_wlan0_init(void *private_data)
+      |     ^~~~~~~~~~~~~~~~~~~~~~~~
+/home/user0/.WORKDIR/eswin_wifi/eswin_6600u/fullmac/ecrnx_debugfs_custom.c:962:5: warning: no previous prototype for ‘ecrnx_debugfs_ap0_init’ [-Wmissing-prototypes]
+  962 | int ecrnx_debugfs_ap0_init(void *private_data)
+      |     ^~~~~~~~~~~~~~~~~~~~~~
+/home/user0/.WORKDIR/eswin_wifi/eswin_6600u/fullmac/ecrnx_debugfs_custom.c:1088:5: warning: no previous prototype for ‘ecrnx_debugfs_p2p0_init’ [-Wmissing-prototypes]
+ 1088 | int ecrnx_debugfs_p2p0_init(void *private_data)
+      |     ^~~~~~~~~~~~~~~~~~~~~~~
+/home/user0/.WORKDIR/eswin_wifi/eswin_6600u/fullmac/ecrnx_debugfs_custom.c:1117:6: warning: no previous prototype for ‘exrnx_debugfs_sruvey_info_tbl_init’ [-Wmissing-prototypes]
+ 1117 | void exrnx_debugfs_sruvey_info_tbl_init(void *private_data)
+      |      ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  LD [M]  /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/wlan_ecr6600.o
+/bin/sh: 1: test: Illegal number: 6.8
+  MODPOST /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/Module.symvers
+ERROR: modpost: "getBootTime" [/home/user0/.WORKDIR/eswin_wifi/eswin_6600u/wlan_ecr6600.ko] undefined!
+ERROR: modpost: "ecrnx_rx_handle_msg" [/home/user0/.WORKDIR/eswin_wifi/eswin_6600u/wlan_ecr6600.ko] undefined!
+make[3]: *** [scripts/Makefile.modpost:145: /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/Module.symvers] Error 1
+make[2]: *** [/usr/src/linux-headers-6.8.0-85-generic/Makefile:1879: modpost] Error 2
+make[1]: *** [Makefile:240: __sub-make] Error 2
+make[1]: Leaving directory '/usr/src/linux-headers-6.8.0-85-generic'
+make: *** [Makefile:154: modules] Error 2

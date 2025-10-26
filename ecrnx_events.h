@@ -47,6 +47,17 @@ enum p2p_action_type {
     P2P_ACTION_PROV_DISC_RSP,       /* Provision Discovery Response */
 };
 
+
+const char *ftrace_print_mgmt_info(struct trace_seq *p, u16 frame_control, u8 cat, u8 type, u8 p2p);
+const char *ftrace_print_txq(struct trace_seq *p, int txq_idx);
+const char *ftrace_print_sta(struct trace_seq *p, int sta_idx);
+const char *ftrace_print_hwq(struct trace_seq *p, int hwq_idx);
+const char *ftrace_print_hwq_cred(struct trace_seq *p, u8 *cred);
+const char *ftrace_print_mu_info(struct trace_seq *p, u8 mu_info);
+const char *ftrace_print_mu_group(struct trace_seq *p, int nb_user, u8 *users);
+const char *ftrace_print_amsdu(struct trace_seq *p, u16 nb_pkt);
+
+
 const char *ftrace_print_mgmt_info(struct trace_seq *p, u16 frame_control, u8 cat, u8 type, u8 p2p) {
     const char *ret = trace_seq_buffer_ptr(p);
 

@@ -20,8 +20,8 @@ endif
 ###################### Platform Related #######################
 CONFIG_PLATFORM_RTK_RTD2851D = n
 CONFIG_PLATFORM_MTK_MT9255 = n
-CONFIG_PLATFORM_RASPBERRY = y
-CONFIG_PLATFORM_X86 = n
+CONFIG_PLATFORM_RASPBERRY = n
+CONFIG_PLATFORM_X86 = y
 CONFIG_PLATFORM_AML_T963 = n
 CONFIG_PLATFORM_INGENIC = n
 CONFIG_PLATFORM_CVITEK_CV1821 = n
@@ -98,6 +98,13 @@ subdir-ccflags-$(CONFIG_ECRNX_TASKLET) += -DCONFIG_ECRNX_TASKLET
 endif
 
 subdir-ccflags-y += -DCONFIG_ECRNX_DBG_MASK=$(CONFIG_ECRNX_DBG_MASK)
+
+subdir-ccflags-y += -DCONFIG_ECRNX_KERNEL_VERSION=$(shell echo $(VERSION).$(PATCHLEVEL))
+
+# Add this after the kernel version definition
+ifeq ($(shell test $(VERSION).$(PATCHLEVEL) -ge 6.0; echo $$?),0)
+subdir-ccflags-y += -DECRNX_MODERN_KERNEL
+endif
 
 # FW VARS
 subdir-ccflags-y += -DNX_VIRT_DEV_MAX=$(NX_VIRT_DEV_MAX)

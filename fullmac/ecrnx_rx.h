@@ -120,6 +120,14 @@ void ecrnx_rx_reord_deinit(struct ecrnx_hw *ecrnx_hw);
 void ecrnx_rx_reord_init(struct ecrnx_hw *ecrnx_hw);
 void ecrnx_rx_reord_sta_init(struct ecrnx_hw* ecrnx_hw, struct ecrnx_vif *ecrnx_vif, u8 sta_idx);
 void ecrnx_rx_reord_sta_deinit(struct ecrnx_hw* ecrnx_hw, u8 sta_idx, bool is_del);
+void ecrnx_rx_reord_msdu_free(spinlock_t *lock, struct list_head *q, struct list_head *list);
+struct reord_msdu_info *ecrnx_rx_reord_msdu_alloc(spinlock_t *lock, struct list_head *q);
+int ecrnx_rx_fast_update_msdu(struct ecrnx_hw *ecrnx_hw, struct ecrnx_vif *ecrnx_vif, struct reord_msdu_info *pmsdu);
+int ecrnx_rx_reord_single_msdu(struct ecrnx_hw *ecrnx_hw, struct ecrnx_vif *ecrnx_vif, struct reord_msdu_info *pmsdu);
+
+
+void ecrnx_rx_reord_timeout_handler(struct timer_list *t);
+void ecrnx_rx_reord_timeout_worker(struct work_struct *work);
 
 
 #endif /* _ECRNX_RX_H_ */

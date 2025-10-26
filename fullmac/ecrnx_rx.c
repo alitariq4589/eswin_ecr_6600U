@@ -213,9 +213,13 @@ static bool ecrnx_rx_data_skb(struct ecrnx_hw *ecrnx_hw, struct ecrnx_vif *ecrnx
 
     if (amsdu) {
         int count;
+#ifdef ECRNX_MODERN_KERNEL
+        ieee80211_amsdu_to_8023s(skb, &list, ecrnx_vif->ndev->dev_addr,
+                         ECRNX_VIF_TYPE(ecrnx_vif), 0, NULL, NULL, 0);
+#else
         ieee80211_amsdu_to_8023s(skb, &list, ecrnx_vif->ndev->dev_addr,
                                  ECRNX_VIF_TYPE(ecrnx_vif), 0, NULL, NULL);
-
+#endif
         count = skb_queue_len(&list);
         if (count == 0)
         {

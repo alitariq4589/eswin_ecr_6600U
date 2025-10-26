@@ -132,6 +132,7 @@ struct tx_buff_pkg_head {
 
 typedef int (*sdio_rx_cb_t)(void *priv, struct sk_buff *skb);
 typedef int (*sdio_data_cfm_cb_t)(void *priv, void *host_id);
+
 struct eswin {
 
     void *umac_priv; //mac drv data.

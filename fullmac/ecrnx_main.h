@@ -13,7 +13,8 @@
 
 #include "ecrnx_defs.h"
 
-int ecrnx_cfg80211_init(struct ecrnx_plat *ecrnx_plat, void **platform_data);
+// int ecrnx_cfg80211_init(struct ecrnx_plat *ecrnx_plat, void **platform_data);
+int ecrnx_cfg80211_init(void *ecrnx_plat, void **platform_data);
 void ecrnx_cfg80211_deinit(struct ecrnx_hw *ecrnx_hw);
 
 #endif /* _ECRNX_MAIN_H_ */

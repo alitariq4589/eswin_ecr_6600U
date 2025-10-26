@@ -253,10 +253,13 @@ int ecrnx_rf_info_get(struct seq_file *seq, IF_TYPE_EN iftype,RF_INFO_ST *cur, R
 
     if (0 != ecrnx_wdev_match(wdev, iftype, &index))
         return -1;
-
+#ifdef ECRNX_MODERN_KERNEL
+    if (0 != ecrnx_cfg80211_get_channel(wdev[index]->wiphy, wdev[index],0, &chandef))
+        return -1;
+#else
     if (0 != ecrnx_cfg80211_get_channel(wdev[index]->wiphy, wdev[index], &chandef))
         return -1;
-
+#endif
     cur->ch = (chandef.center_freq1 - 2412)/5 + 1;
     cur->bw = chandef.width;
     cur->ch_offset = 0;
@@ -349,8 +352,11 @@ int ecrnx_channel_get(struct seq_file *seq, IF_TYPE_EN iftype, struct cfg80211_c
 
     if (0 != ecrnx_wdev_match(wdev, iftype, &index))
         return -1;
-
+#ifdef ECRNX_MODERN_KERNEL
+    return ecrnx_cfg80211_get_channel(wdev[index]->wiphy, wdev[index],0, chandef);
+#else
     return ecrnx_cfg80211_get_channel(wdev[index]->wiphy, wdev[index], chandef);
+#endif
 }
 
 int ecrnx_p2p_role_get(struct seq_file *seq, IF_TYPE_EN iftype)
@@ -438,9 +444,12 @@ int ecrnx_ssid_get(struct seq_file *seq, IF_TYPE_EN iftype, char *ssid)
 
     if (0 != ecrnx_wdev_match(wdev, iftype, &index))
         return -1;
-
+#ifdef ECRNX_MODERN_KERNEL
+    struct ecrnx_vif *vif = netdev_priv(wdev[index]->netdev);
+    memcpy(ssid, vif->ssid, IEEE80211_MAX_SSID_LEN);    
+#else
     memcpy(ssid, wdev[index]->ssid, IEEE80211_MAX_SSID_LEN);
-
+#endif
     return 0;
 }
 
@@ -702,6 +711,16 @@ void ecrnx_debugfs_add_station_in_ap_mode(struct ecrnx_hw *ecrnx_hw,
 
     if(sta->ht)
     {
+#ifdef ECRNX_MODERN_KERNEL
+        if (params->link_sta_params.ht_capa->cap_info & IEEE80211_HT_CAP_TX_STBC)
+            debugfs_sta->stbc_cap = 1;
+        if (params->link_sta_params.ht_capa->cap_info & IEEE80211_HT_CAP_LDPC_CODING)
+            debugfs_sta->ldpc_cap = 1;
+        if (params->link_sta_params.ht_capa->cap_info & IEEE80211_HT_CAP_SGI_20)
+            debugfs_sta->sgi_20m = 1;
+        if (params->link_sta_params.ht_capa->cap_info & IEEE80211_HT_CAP_SGI_40)
+            debugfs_sta->sgi_40m = 1;
+#else
         if (params->ht_capa->cap_info & IEEE80211_HT_CAP_TX_STBC)
             debugfs_sta->stbc_cap = 1;
         if (params->ht_capa->cap_info & IEEE80211_HT_CAP_LDPC_CODING)
@@ -710,6 +729,7 @@ void ecrnx_debugfs_add_station_in_ap_mode(struct ecrnx_hw *ecrnx_hw,
             debugfs_sta->sgi_20m = 1;
         if (params->ht_capa->cap_info & IEEE80211_HT_CAP_SGI_40)
             debugfs_sta->sgi_40m = 1;
+#endif
     }
 
     ecrnx_debugfs_sta_in_ap_init(debugfs_sta);
