@@ -25,6 +25,9 @@ CONFIG_PLATFORM_X86 = y
 CONFIG_PLATFORM_AML_T963 = n
 CONFIG_PLATFORM_INGENIC = n
 CONFIG_PLATFORM_CVITEK_CV1821 = n
+export CONFIG_ECRNX_ESWIN_USB = y
+export CONFIG_ECRNX_ESWIN_SDIO = n
+export CONFIG_ECRNX_WORKQUEUE = y
 ###############################################################
 
 ifeq ($(CONFIG_PLATFORM_RTK_RTD2851D), y)
@@ -102,7 +105,7 @@ subdir-ccflags-y += -DCONFIG_ECRNX_DBG_MASK=$(CONFIG_ECRNX_DBG_MASK)
 subdir-ccflags-y += -DCONFIG_ECRNX_KERNEL_VERSION=$(shell echo $(VERSION).$(PATCHLEVEL))
 
 # Add this after the kernel version definition
-ifeq ($(shell test $(VERSION).$(PATCHLEVEL) -ge 6.0; echo $$?),0)
+ifeq ($(shell [ $(VERSION) -ge 6 ] && echo 0 || echo 1),0)
 subdir-ccflags-y += -DECRNX_MODERN_KERNEL
 endif
 

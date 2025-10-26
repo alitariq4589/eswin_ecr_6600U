@@ -109,3 +109,5 @@ void usb_host_amt_rx_handler(uint32_t frm_type, struct sk_buff *skb);
 void usb_host_rx_handler(uint32_t frm_type, struct ipc_host_env_tag *env, struct sk_buff *skb);
 
 #endif /* __ECRNX_USB_H */
+int ecrnx_usb_driver_init(void);
+void ecrnx_usb_driver_exit(void);

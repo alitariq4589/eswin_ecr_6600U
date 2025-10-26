@@ -468,7 +468,15 @@ static struct usb_driver ecrnx_usb_driver = {
 };
 
 /* Register driver with the USB core */
-module_usb_driver(ecrnx_usb_driver);
+int ecrnx_usb_driver_init(void)
+{
+    return usb_register(&ecrnx_usb_driver);
+}
+
+void ecrnx_usb_driver_exit(void)
+{
+    usb_deregister(&ecrnx_usb_driver);
+}
 
 MODULE_AUTHOR("ESWIN");
 MODULE_DESCRIPTION("ECRNX USB WiFi driver");

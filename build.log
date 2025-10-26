@@ -1,49 +1,125 @@
-/bin/sh: 1: test: Illegal number: .
-Makefile:153: "select chip is 6600."
-Makefile:155: "select slave is used CEVA RTOS."
+/bin/sh: 1: [: -ge: unexpected operator
+Makefile:156: "select chip is 6600."
+Makefile:158: "select slave is used CEVA RTOS."
 rm -rf *.ko
 make -C /lib/modules/6.8.0-85-generic/build O=/lib/modules/6.8.0-85-generic/build M=/home/user0/.WORKDIR/eswin_wifi/eswin_6600u modules
 make[1]: Entering directory '/usr/src/linux-headers-6.8.0-85-generic'
-strip: 'wlan_ecr6600.ko': No such file
-make: *** [Makefile:177: strip] Error 1
-make: *** Waiting for unfinished jobs....
 warning: the compiler differs from the one used to build the kernel
   The kernel was built by: x86_64-linux-gnu-gcc-12 (Ubuntu 12.3.0-1ubuntu1~22.04.2) 12.3.0
   You are using:           gcc-12 (Ubuntu 12.3.0-1ubuntu1~22.04.2) 12.3.0
-/bin/sh: 1: test: Illegal number: 6.8
   CC [M]  /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/ecrnx_msg_tx.o
+In file included from /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/ecrnx_msg_tx.c:19:
+/home/user0/.WORKDIR/eswin_wifi/eswin_6600u/ecrnx_compat.h:531: warning: "ECRNX_MODERN_KERNEL" redefined
+  531 | #define ECRNX_MODERN_KERNEL
+      | 
+<command-line>: note: this is the location of the previous definition
   CC [M]  /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/ecrnx_msg_rx.o
-  CC [M]  /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/ecrnx_utils.o
-  CC [M]  /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/ecrnx_cmds.o
-  CC [M]  /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/ecrnx_cfgfile.o
-  CC [M]  /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/ecrnx_strs.o
-  CC [M]  /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/ecrnx_txq.o
-  CC [M]  /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/ecrnx_mod_params.o
-  CC [M]  /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/ecrnx_platform.o
-/home/user0/.WORKDIR/eswin_wifi/eswin_6600u/ecrnx_utils.c:98:12: warning: ‘ecrnx_ipc_skb_elem_allocs’ defined but not used [-Wunused-function]
-   98 | static int ecrnx_ipc_skb_elem_allocs(struct ecrnx_hw *ecrnx_hw,
-      |            ^~~~~~~~~~~~~~~~~~~~~~~~~
+In file included from /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/ecrnx_events.h:22,
+                 from /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/ecrnx_msg_rx.c:21:
+/home/user0/.WORKDIR/eswin_wifi/eswin_6600u/ecrnx_compat.h:531: warning: "ECRNX_MODERN_KERNEL" redefined
+  531 | #define ECRNX_MODERN_KERNEL
+      | 
+<command-line>: note: this is the location of the previous definition
 /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/ecrnx_msg_rx.c:578:7: warning: no previous declaration for ‘getBootTime’ [-Wmissing-declarations]
   578 | u64_l getBootTime(void)
       |       ^~~~~~~~~~~
 /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/ecrnx_msg_rx.c:1387:21: warning: no previous declaration for ‘ecrnx_rx_handle_msg’ [-Wmissing-declarations]
  1387 | __maybe_unused void ecrnx_rx_handle_msg(struct ecrnx_hw *ecrnx_hw, struct ipc_e2a_msg *msg)
       |                     ^~~~~~~~~~~~~~~~~~~
+  CC [M]  /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/ecrnx_utils.o
+In file included from /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/usb/core.h:9,
+                 from /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/fw_head_check.h:16,
+                 from /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/fullmac/ecrnx_debugfs_func.h:7,
+                 from /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/ecrnx_utils.c:28:
+/home/user0/.WORKDIR/eswin_wifi/eswin_6600u/ecrnx_compat.h:531: warning: "ECRNX_MODERN_KERNEL" redefined
+  531 | #define ECRNX_MODERN_KERNEL
+      | 
+<command-line>: note: this is the location of the previous definition
+/home/user0/.WORKDIR/eswin_wifi/eswin_6600u/ecrnx_utils.c:98:12: warning: ‘ecrnx_ipc_skb_elem_allocs’ defined but not used [-Wunused-function]
+   98 | static int ecrnx_ipc_skb_elem_allocs(struct ecrnx_hw *ecrnx_hw,
+      |            ^~~~~~~~~~~~~~~~~~~~~~~~~
+  CC [M]  /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/ecrnx_cmds.o
+In file included from /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/ecrnx_events.h:22,
+                 from /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/ecrnx_cmds.c:20:
+/home/user0/.WORKDIR/eswin_wifi/eswin_6600u/ecrnx_compat.h:531: warning: "ECRNX_MODERN_KERNEL" redefined
+  531 | #define ECRNX_MODERN_KERNEL
+      | 
+<command-line>: note: this is the location of the previous definition
+  CC [M]  /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/ecrnx_cfgfile.o
+In file included from /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/usb/core.h:9,
+                 from /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/fw_head_check.h:16,
+                 from /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/fullmac/ecrnx_debugfs_func.h:7,
+                 from /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/ecrnx_cfgfile.c:16:
+/home/user0/.WORKDIR/eswin_wifi/eswin_6600u/ecrnx_compat.h:531: warning: "ECRNX_MODERN_KERNEL" redefined
+  531 | #define ECRNX_MODERN_KERNEL
+      | 
+<command-line>: note: this is the location of the previous definition
+  CC [M]  /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/ecrnx_strs.o
+  CC [M]  /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/ecrnx_txq.o
+In file included from /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/ecrnx_events.h:22,
+                 from /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/ecrnx_txq.c:14:
+/home/user0/.WORKDIR/eswin_wifi/eswin_6600u/ecrnx_compat.h:531: warning: "ECRNX_MODERN_KERNEL" redefined
+  531 | #define ECRNX_MODERN_KERNEL
+      | 
+<command-line>: note: this is the location of the previous definition
+  CC [M]  /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/ecrnx_mod_params.o
+In file included from /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/ecrnx_mod_params.c:20:
+/home/user0/.WORKDIR/eswin_wifi/eswin_6600u/ecrnx_compat.h:531: warning: "ECRNX_MODERN_KERNEL" redefined
+  531 | #define ECRNX_MODERN_KERNEL
+      | 
+<command-line>: note: this is the location of the previous definition
+  CC [M]  /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/ecrnx_platform.o
+In file included from /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/usb/core.h:9,
+                 from /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/ecrnx_platform.c:28:
+/home/user0/.WORKDIR/eswin_wifi/eswin_6600u/ecrnx_compat.h:531: warning: "ECRNX_MODERN_KERNEL" redefined
+  531 | #define ECRNX_MODERN_KERNEL
+      | 
+<command-line>: note: this is the location of the previous definition
   CC [M]  /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/ipc_host.o
   CC [M]  /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/hal_desc.o
   CC [M]  /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/ecrnx_iwpriv.o
+In file included from /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/usb/core.h:9,
+                 from /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/ecrnx_iwpriv.c:25:
+/home/user0/.WORKDIR/eswin_wifi/eswin_6600u/ecrnx_compat.h:531: warning: "ECRNX_MODERN_KERNEL" redefined
+  531 | #define ECRNX_MODERN_KERNEL
+      | 
+<command-line>: note: this is the location of the previous definition
   CC [M]  /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/fw_head_check.o
+In file included from /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/usb/core.h:9,
+                 from /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/fw_head_check.c:16:
+/home/user0/.WORKDIR/eswin_wifi/eswin_6600u/ecrnx_compat.h:531: warning: "ECRNX_MODERN_KERNEL" redefined
+  531 | #define ECRNX_MODERN_KERNEL
+      | 
+<command-line>: note: this is the location of the previous definition
   CC [M]  /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/slave_log_buf.o
+In file included from /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/usb/core.h:9,
+                 from /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/slave_log_buf.h:4,
+                 from /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/slave_log_buf.c:1:
+/home/user0/.WORKDIR/eswin_wifi/eswin_6600u/ecrnx_compat.h:531: warning: "ECRNX_MODERN_KERNEL" redefined
+  531 | #define ECRNX_MODERN_KERNEL
+      | 
+<command-line>: note: this is the location of the previous definition
   CC [M]  /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/fullmac/ecrnx_tdls.o
+In file included from /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/fullmac/ecrnx_tdls.c:17:
+/home/user0/.WORKDIR/eswin_wifi/eswin_6600u/ecrnx_compat.h:531: warning: "ECRNX_MODERN_KERNEL" redefined
+  531 | #define ECRNX_MODERN_KERNEL
+      | 
+<command-line>: note: this is the location of the previous definition
   CC [M]  /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/fullmac/ecrnx_mesh.o
   CC [M]  /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/fullmac/ecrnx_main.o
+In file included from /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/ecrnx_events.h:22,
+                 from /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/fullmac/ecrnx_main.c:38:
+/home/user0/.WORKDIR/eswin_wifi/eswin_6600u/ecrnx_compat.h:531: warning: "ECRNX_MODERN_KERNEL" redefined
+  531 | #define ECRNX_MODERN_KERNEL
+      | 
+<command-line>: note: this is the location of the previous definition
   CC [M]  /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/fullmac/ecrnx_rx.o
-  CC [M]  /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/fullmac/ecrnx_tx.o
-  CC [M]  /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/fullmac/ecrnx_calibration_data.o
-  CC [M]  /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/sdio/sdio.o
-  CC [M]  /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/sdio/ecrnx_sdio.o
-  CC [M]  /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/sdio/core.o
-  CC [M]  /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/sdio/fw.o
+In file included from /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/ecrnx_events.h:22,
+                 from /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/fullmac/ecrnx_rx.c:20:
+/home/user0/.WORKDIR/eswin_wifi/eswin_6600u/ecrnx_compat.h:531: warning: "ECRNX_MODERN_KERNEL" redefined
+  531 | #define ECRNX_MODERN_KERNEL
+      | 
+<command-line>: note: this is the location of the previous definition
 /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/fullmac/ecrnx_rx.c:1382:5: warning: no previous declaration for ‘ecrnx_rx_reord_tid_flush’ [-Wmissing-declarations]
  1382 | int ecrnx_rx_reord_tid_flush(struct ecrnx_hw *ecrnx_hw, struct ecrnx_vif *ecrnx_vif, struct sk_buff *skb, u8 sta_idx, u8 tid)
       |     ^~~~~~~~~~~~~~~~~~~~~~~~
@@ -65,107 +141,6 @@ warning: the compiler differs from the one used to build the kernel
 /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/fullmac/ecrnx_rx.c:2229:5: warning: no previous declaration for ‘ecrnx_msg_cfm_callback’ [-Wmissing-declarations]
  2229 | int ecrnx_msg_cfm_callback(void *priv, void *host_id)
       |     ^~~~~~~~~~~~~~~~~~~~~~
-  CC [M]  /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/eswin_port/eswin_utils.o
-/home/user0/.WORKDIR/eswin_wifi/eswin_6600u/sdio/sdio.c:154:6: warning: no previous declaration for ‘debugfs_sdio_init’ [-Wmissing-declarations]
-  154 | void debugfs_sdio_init(void)
-      |      ^~~~~~~~~~~~~~~~~
-/home/user0/.WORKDIR/eswin_wifi/eswin_6600u/sdio/sdio.c:160:6: warning: no previous declaration for ‘debug_sdio_rx_callback’ [-Wmissing-declarations]
-  160 | void debug_sdio_rx_callback(struct sk_buff *skb)
-      |      ^~~~~~~~~~~~~~~~~~~~~~
-/home/user0/.WORKDIR/eswin_wifi/eswin_6600u/sdio/sdio.c:507:6: warning: no previous declaration for ‘dump_sdio_buf’ [-Wmissing-declarations]
-  507 | void dump_sdio_buf(struct tx_buff_node *node)
-      |      ^~~~~~~~~~~~~
-/home/user0/.WORKDIR/eswin_wifi/eswin_6600u/sdio/sdio.c: In function ‘sdio_raw_write’:
-/home/user0/.WORKDIR/eswin_wifi/eswin_6600u/sdio/sdio.c:618:51: warning: passing argument 3 of ‘sdio_writesb’ discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
-  618 |                 sdio_writesb(tr_sdio->func, 0x8C, data,  len);
-      |                                                   ^~~~
-In file included from /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/sdio/sdio.c:15:
-./include/linux/mmc/sdio_func.h:162:15: note: expected ‘void *’ but argument is of type ‘const void *’
-  162 |         void *src, int count);
-      |         ~~~~~~^~~
-/home/user0/.WORKDIR/eswin_wifi/eswin_6600u/sdio/sdio.c:623:67: warning: passing argument 3 of ‘sdio_writesb’ discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
-  623 |                 ret = sdio_writesb(tr_sdio->func, SDIO_ADDR_DATA, data,  len);
-      |                                                                   ^~~~
-./include/linux/mmc/sdio_func.h:162:15: note: expected ‘void *’ but argument is of type ‘const void *’
-  162 |         void *src, int count);
-      |         ~~~~~~^~~
-/home/user0/.WORKDIR/eswin_wifi/eswin_6600u/sdio/sdio.c: At top level:
-/home/user0/.WORKDIR/eswin_wifi/eswin_6600u/sdio/sdio.c:738:6: warning: no previous declaration for ‘sdio_need_fw_download’ [-Wmissing-declarations]
-  738 | bool sdio_need_fw_download(void)
-      |      ^~~~~~~~~~~~~~~~~~~~~
-/home/user0/.WORKDIR/eswin_wifi/eswin_6600u/sdio/sdio.c:744:6: warning: no previous declaration for ‘sdio_reset_func2’ [-Wmissing-declarations]
-  744 | void sdio_reset_func2(void)
-      |      ^~~~~~~~~~~~~~~~
-/home/user0/.WORKDIR/eswin_wifi/eswin_6600u/fullmac/ecrnx_tx.c:1649:6: warning: no previous declaration for ‘ecrnx_tx_retry_sdio’ [-Wmissing-declarations]
- 1649 | void ecrnx_tx_retry_sdio(struct ecrnx_hw *ecrnx_hw, struct sk_buff *skb,
-      |      ^~~~~~~~~~~~~~~~~~~
-/home/user0/.WORKDIR/eswin_wifi/eswin_6600u/sdio/ecrnx_sdio.c: In function ‘sdio_host_msgack_handler’:
-/home/user0/.WORKDIR/eswin_wifi/eswin_6600u/sdio/ecrnx_sdio.c:270:41: warning: passing argument 2 of ‘env->cb.recv_msgack_ind’ makes pointer from integer without a cast [-Wint-conversion]
-  270 |     env->cb.recv_msgack_ind(env->pthis, hostid);
-      |                                         ^~~~~~
-      |                                         |
-      |                                         uint64_t {aka long long unsigned int}
-/home/user0/.WORKDIR/eswin_wifi/eswin_6600u/sdio/ecrnx_sdio.c:270:41: note: expected ‘void *’ but argument is of type ‘uint64_t’ {aka ‘long long unsigned int’}
-/home/user0/.WORKDIR/eswin_wifi/eswin_6600u/sdio/ecrnx_sdio.c: In function ‘sdio_host_tx_cfm_handler’:
-/home/user0/.WORKDIR/eswin_wifi/eswin_6600u/sdio/ecrnx_sdio.c:318:46: warning: passing argument 2 of ‘env->cb.send_data_cfm’ makes pointer from integer without a cast [-Wint-conversion]
-  318 |     return env->cb.send_data_cfm(env->pthis, host_id);
-      |                                              ^~~~~~~
-      |                                              |
-      |                                              u64_l {aka long long unsigned int}
-/home/user0/.WORKDIR/eswin_wifi/eswin_6600u/sdio/ecrnx_sdio.c:318:46: note: expected ‘void *’ but argument is of type ‘u64_l’ {aka ‘long long unsigned int’}
-/home/user0/.WORKDIR/eswin_wifi/eswin_6600u/sdio/ecrnx_sdio.c: At top level:
-/home/user0/.WORKDIR/eswin_wifi/eswin_6600u/sdio/ecrnx_sdio.c:281:12: warning: ‘sdio_host_dbg_handler’ defined but not used [-Wunused-function]
-  281 | static int sdio_host_dbg_handler(struct ipc_host_env_tag *env, struct sk_buff *skb)
-      |            ^~~~~~~~~~~~~~~~~~~~~
-/home/user0/.WORKDIR/eswin_wifi/eswin_6600u/sdio/ecrnx_sdio.c:57:13: warning: ‘sdio_rx_buf_init’ defined but not used [-Wunused-function]
-   57 | static void sdio_rx_buf_init(void)
-      |             ^~~~~~~~~~~~~~~~
-/home/user0/.WORKDIR/eswin_wifi/eswin_6600u/sdio/core.c:115:6: warning: no previous declaration for ‘sdio_tx_queue_init’ [-Wmissing-declarations]
-  115 | void sdio_tx_queue_init(struct tx_buff_queue * queue)
-      |      ^~~~~~~~~~~~~~~~~~
-/home/user0/.WORKDIR/eswin_wifi/eswin_6600u/sdio/core.c:123:6: warning: no previous declaration for ‘sdio_tx_queue_push’ [-Wmissing-declarations]
-  123 | void sdio_tx_queue_push(struct tx_buff_queue * queue, struct tx_buff_node *node)
-      |      ^~~~~~~~~~~~~~~~~~
-/home/user0/.WORKDIR/eswin_wifi/eswin_6600u/sdio/core.c:144:22: warning: no previous declaration for ‘sdio_tx_queue_pop’ [-Wmissing-declarations]
-  144 | struct tx_buff_node *sdio_tx_queue_pop(struct tx_buff_queue *queue)
-      |                      ^~~~~~~~~~~~~~~~~
-/home/user0/.WORKDIR/eswin_wifi/eswin_6600u/sdio/core.c:165:22: warning: no previous declaration for ‘sdio_tx_queue_peek’ [-Wmissing-declarations]
-  165 | struct tx_buff_node *sdio_tx_queue_peek(struct tx_buff_queue *queue)
-      |                      ^~~~~~~~~~~~~~~~~~
-/home/user0/.WORKDIR/eswin_wifi/eswin_6600u/sdio/core.c:180:23: warning: no previous declaration for ‘sdio_tx_node_alloc’ [-Wmissing-declarations]
-  180 | struct tx_buff_node * sdio_tx_node_alloc(struct eswin *tr)
-      |                       ^~~~~~~~~~~~~~~~~~
-/home/user0/.WORKDIR/eswin_wifi/eswin_6600u/sdio/core.c:200:6: warning: no previous declaration for ‘sdio_tx_node_free’ [-Wmissing-declarations]
-  200 | void sdio_tx_node_free(struct eswin *tr, struct tx_buff_node * node)
-      |      ^~~~~~~~~~~~~~~~~
-/home/user0/.WORKDIR/eswin_wifi/eswin_6600u/sdio/core.c:212:6: warning: no previous declaration for ‘sdio_tx_pkg_queue_init’ [-Wmissing-declarations]
-  212 | void sdio_tx_pkg_queue_init(struct tx_buff_pkg_queue * queue)
-      |      ^~~~~~~~~~~~~~~~~~~~~~
-/home/user0/.WORKDIR/eswin_wifi/eswin_6600u/sdio/core.c:220:6: warning: no previous declaration for ‘sdio_tx_pkg_queue_push’ [-Wmissing-declarations]
-  220 | void sdio_tx_pkg_queue_push(struct tx_buff_pkg_queue * queue, struct tx_buff_pkg_node *node)
-      |      ^~~~~~~~~~~~~~~~~~~~~~
-/home/user0/.WORKDIR/eswin_wifi/eswin_6600u/sdio/core.c:238:26: warning: no previous declaration for ‘sdio_tx_pkg_queue_pop’ [-Wmissing-declarations]
-  238 | struct tx_buff_pkg_node *sdio_tx_pkg_queue_pop(struct tx_buff_pkg_queue *queue)
-      |                          ^~~~~~~~~~~~~~~~~~~~~
-/home/user0/.WORKDIR/eswin_wifi/eswin_6600u/sdio/core.c:256:27: warning: no previous declaration for ‘sdio_tx_pkg_node_alloc’ [-Wmissing-declarations]
-  256 | struct tx_buff_pkg_node * sdio_tx_pkg_node_alloc(struct eswin *tr)
-      |                           ^~~~~~~~~~~~~~~~~~~~~~
-/home/user0/.WORKDIR/eswin_wifi/eswin_6600u/sdio/core.c:276:6: warning: no previous declaration for ‘sdio_tx_pkg_node_free’ [-Wmissing-declarations]
-  276 | void sdio_tx_pkg_node_free(struct eswin *tr, struct tx_buff_pkg_node * node)
-      |      ^~~~~~~~~~~~~~~~~~~~~
-/home/user0/.WORKDIR/eswin_wifi/eswin_6600u/sdio/core.c:304:6: warning: no previous declaration for ‘eswin_sdio_register_rx_cb’ [-Wmissing-declarations]
-  304 | void eswin_sdio_register_rx_cb(struct eswin *tr, sdio_rx_cb_t cb)
-      |      ^~~~~~~~~~~~~~~~~~~~~~~~~
-/home/user0/.WORKDIR/eswin_wifi/eswin_6600u/sdio/core.c:597:6: warning: no previous declaration for ‘eswin_sdio_ops_init’ [-Wmissing-declarations]
-  597 | void eswin_sdio_ops_init(struct eswin * tr, const struct sdio_ops * ops)
-      |      ^~~~~~~~~~~~~~~~~~~
-/home/user0/.WORKDIR/eswin_wifi/eswin_6600u/sdio/core.c:679:6: warning: no previous declaration for ‘sdio_tx_timer_handle’ [-Wmissing-declarations]
-  679 | void sdio_tx_timer_handle(struct timer_list *time)
-      |      ^~~~~~~~~~~~~~~~~~~~
-/home/user0/.WORKDIR/eswin_wifi/eswin_6600u/sdio/core.c: In function ‘eswin_core_create’:
-/home/user0/.WORKDIR/eswin_wifi/eswin_6600u/sdio/core.c:728:1: warning: label ‘err_free_mac’ defined but not used [-Wunused-label]
-  728 | err_free_mac:
-      | ^~~~~~~~~~~~
 In file included from ./include/linux/string.h:292,
                  from ./include/linux/dma-mapping.h:7,
                  from /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/fullmac/ecrnx_rx.c:10:
@@ -174,25 +149,89 @@ In function ‘fortify_memcpy_chk’,
 ./include/linux/fortify-string.h:542:25: warning: call to ‘__write_overflow_field’ declared with attribute warning: detected write beyond size of field (1st parameter); maybe use struct_group()? [-Wattribute-warning]
   542 |                         __write_overflow_field(p_size_field, size);
       |                         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-  CC [M]  /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/fullmac/ecrnx_amt.o
-  CC [M]  /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/ecrnx_radar.o
-  CC [M]  /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/ecrnx_debugfs.o
-/home/user0/.WORKDIR/eswin_wifi/eswin_6600u/sdio/fw.c:21:6: warning: no previous declaration for ‘eswin_fw_file_download’ [-Wmissing-declarations]
-   21 | void eswin_fw_file_download(struct eswin *tr)
-      |      ^~~~~~~~~~~~~~~~~~~~~~
-/home/user0/.WORKDIR/eswin_wifi/eswin_6600u/sdio/fw.c:116:6: warning: no previous declaration for ‘eswin_fw_file_chech’ [-Wmissing-declarations]
-  116 | bool eswin_fw_file_chech(struct eswin *tr)
+  CC [M]  /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/fullmac/ecrnx_tx.o
+In file included from /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/ecrnx_events.h:22,
+                 from /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/fullmac/ecrnx_tx.c:18:
+/home/user0/.WORKDIR/eswin_wifi/eswin_6600u/ecrnx_compat.h:531: warning: "ECRNX_MODERN_KERNEL" redefined
+  531 | #define ECRNX_MODERN_KERNEL
+      | 
+<command-line>: note: this is the location of the previous definition
+/home/user0/.WORKDIR/eswin_wifi/eswin_6600u/fullmac/ecrnx_tx.c:1664:6: warning: no previous declaration for ‘ecrnx_tx_retry_usb’ [-Wmissing-declarations]
+ 1664 | void ecrnx_tx_retry_usb(struct ecrnx_hw *ecrnx_hw, struct sk_buff *skb,
+      |      ^~~~~~~~~~~~~~~~~~
+  CC [M]  /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/fullmac/ecrnx_calibration_data.o
+  CC [M]  /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/usb/usb.o
+In file included from /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/usb/core.h:9,
+                 from /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/usb/usb.c:23:
+/home/user0/.WORKDIR/eswin_wifi/eswin_6600u/ecrnx_compat.h:531: warning: "ECRNX_MODERN_KERNEL" redefined
+  531 | #define ECRNX_MODERN_KERNEL
+      | 
+<command-line>: note: this is the location of the previous definition
+/home/user0/.WORKDIR/eswin_wifi/eswin_6600u/usb/usb.c:52:21: warning: no previous declaration for ‘usb_dbg_buf_get’ [-Wmissing-declarations]
+   52 | struct ring_buffer *usb_dbg_buf_get(void)
+      |                     ^~~~~~~~~~~~~~~
+/home/user0/.WORKDIR/eswin_wifi/eswin_6600u/usb/usb.c:62:6: warning: no previous declaration for ‘usb_dbg_printf’ [-Wmissing-declarations]
+   62 | void usb_dbg_printf(void * data, int len)
+      |      ^~~~~~~~~~~~~~
+/home/user0/.WORKDIR/eswin_wifi/eswin_6600u/usb/usb.c:200:6: warning: no previous declaration for ‘usb_rx_timer_handle’ [-Wmissing-declarations]
+  200 | void usb_rx_timer_handle(struct timer_list *time)
       |      ^~~~~~~~~~~~~~~~~~~
-/home/user0/.WORKDIR/eswin_wifi/eswin_6600u/sdio/fw.c:182:6: warning: no previous declaration for ‘eswin_system_running’ [-Wmissing-declarations]
-  182 | bool eswin_system_running(struct eswin *tr)
-      |      ^~~~~~~~~~~~~~~~~~~~
-  CC [M]  /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/ecrnx_fw_dump.o
+/home/user0/.WORKDIR/eswin_wifi/eswin_6600u/usb/usb.c:573:6: warning: no previous declaration for ‘data_timer_handle’ [-Wmissing-declarations]
+  573 | void data_timer_handle(struct timer_list *timer)
+      |      ^~~~~~~~~~~~~~~~~
+/home/user0/.WORKDIR/eswin_wifi/eswin_6600u/usb/usb.c:581:6: warning: no previous declaration for ‘msg_timer_handle’ [-Wmissing-declarations]
+  581 | void msg_timer_handle(struct timer_list *timer)
+      |      ^~~~~~~~~~~~~~~~
+/home/user0/.WORKDIR/eswin_wifi/eswin_6600u/usb/usb.c:674:5: warning: no previous declaration for ‘usb_hif_xmit’ [-Wmissing-declarations]
+  674 | int usb_hif_xmit(struct eswin *tr, struct sk_buff *skb)
+      |     ^~~~~~~~~~~~
+/home/user0/.WORKDIR/eswin_wifi/eswin_6600u/usb/usb.c:1071:6: warning: no previous declaration for ‘ecrnx_usb_reset_sync_fw’ [-Wmissing-declarations]
+ 1071 | void ecrnx_usb_reset_sync_fw(void)
+      |      ^~~~~~~~~~~~~~~~~~~~~~~
+  CC [M]  /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/usb/core.o
+In file included from /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/usb/core.h:9,
+                 from /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/usb/core.c:3:
+/home/user0/.WORKDIR/eswin_wifi/eswin_6600u/ecrnx_compat.h:531: warning: "ECRNX_MODERN_KERNEL" redefined
+  531 | #define ECRNX_MODERN_KERNEL
+      | 
+<command-line>: note: this is the location of the previous definition
+  CC [M]  /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/usb/fw.o
+In file included from /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/usb/core.h:9,
+                 from /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/usb/fw.c:14:
+/home/user0/.WORKDIR/eswin_wifi/eswin_6600u/ecrnx_compat.h:531: warning: "ECRNX_MODERN_KERNEL" redefined
+  531 | #define ECRNX_MODERN_KERNEL
+      | 
+<command-line>: note: this is the location of the previous definition
+/home/user0/.WORKDIR/eswin_wifi/eswin_6600u/usb/fw.c:57:15: warning: no previous declaration for ‘eswin_crc8’ [-Wmissing-declarations]
+   57 | unsigned char eswin_crc8(unsigned char * buf, unsigned short length)
+      |               ^~~~~~~~~~
+/home/user0/.WORKDIR/eswin_wifi/eswin_6600u/usb/fw.c:78:6: warning: no previous declaration for ‘eswin_fw_ack_check’ [-Wmissing-declarations]
+   78 | char eswin_fw_ack_check(u8 * buff)
+      |      ^~~~~~~~~~~~~~~~~~
+/home/user0/.WORKDIR/eswin_wifi/eswin_6600u/usb/fw.c:94:6: warning: no previous declaration for ‘eswin_fw_file_download’ [-Wmissing-declarations]
+   94 | char eswin_fw_file_download(struct eswin *tr)
+      |      ^~~~~~~~~~~~~~~~~~~~~~
+/home/user0/.WORKDIR/eswin_wifi/eswin_6600u/usb/fw.c:233:6: warning: no previous declaration for ‘eswin_fw_file_chech’ [-Wmissing-declarations]
+  233 | bool eswin_fw_file_chech(struct eswin *tr)
+      |      ^~~~~~~~~~~~~~~~~~~
+  CC [M]  /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/usb/ecrnx_usb.o
+In file included from /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/usb/core.h:9,
+                 from /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/usb/ecrnx_usb.c:16:
+/home/user0/.WORKDIR/eswin_wifi/eswin_6600u/ecrnx_compat.h:531: warning: "ECRNX_MODERN_KERNEL" redefined
+  531 | #define ECRNX_MODERN_KERNEL
+      | 
+<command-line>: note: this is the location of the previous definition
+  CC [M]  /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/eswin_port/eswin_utils.o
+In file included from /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/ecrnx_events.h:22,
+                 from /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/eswin_port/eswin_utils.c:21:
+/home/user0/.WORKDIR/eswin_wifi/eswin_6600u/ecrnx_compat.h:531: warning: "ECRNX_MODERN_KERNEL" redefined
+  531 | #define ECRNX_MODERN_KERNEL
+      | 
+<command-line>: note: this is the location of the previous definition
 /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/eswin_port/eswin_utils.c:32:6: warning: no previous declaration for ‘ecrnx_send_handle_register’ [-Wmissing-declarations]
    32 | void ecrnx_send_handle_register(void * fn)
       |      ^~~~~~~~~~~~~~~~~~~~~~~~~~
-  CC [M]  /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/ecrnx_fw_trace.o
-  CC [M]  /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/ecrnx_debug.o
-  CC [M]  /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/fullmac/ecrnx_p2p.o
+  CC [M]  /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/fullmac/ecrnx_amt.o
 /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/fullmac/ecrnx_amt.c:71:6: warning: no previous declaration for ‘ecrnx_amt_config_msg_send’ [-Wmissing-declarations]
    71 |  int ecrnx_amt_config_msg_send(void)
       |      ^~~~~~~~~~~~~~~~~~~~~~~~~
@@ -229,14 +268,33 @@ In file included from ./include/linux/string.h:292,
 /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/fullmac/ecrnx_amt.c:136:6: warning: no previous declaration for ‘ecrnx_amt_deinit’ [-Wmissing-declarations]
   136 | void ecrnx_amt_deinit(void)
       |      ^~~~~~~~~~~~~~~~
+  CC [M]  /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/ecrnx_radar.o
+In file included from /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/ecrnx_events.h:22,
+                 from /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/ecrnx_radar.c:22:
+/home/user0/.WORKDIR/eswin_wifi/eswin_6600u/ecrnx_compat.h:531: warning: "ECRNX_MODERN_KERNEL" redefined
+  531 | #define ECRNX_MODERN_KERNEL
+      | 
+<command-line>: note: this is the location of the previous definition
 /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/ecrnx_radar.c:900:22: warning: no previous declaration for ‘pri_detector_init’ [-Wmissing-declarations]
   900 | struct pri_detector *pri_detector_init(struct dfs_pattern_detector *dpd,
       |                      ^~~~~~~~~~~~~~~~~
+  CC [M]  /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/ecrnx_debugfs.o
 /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/ecrnx_debugfs.c:2206:6: warning: no previous declaration for ‘_ecrnx_dbgfs_sta_write’ [-Wmissing-declarations]
  2206 | void _ecrnx_dbgfs_sta_write(struct ecrnx_debugfs *ecrnx_debugfs, uint8_t sta_idx)
       |      ^~~~~~~~~~~~~~~~~~~~~~
+  CC [M]  /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/ecrnx_fw_dump.o
+  CC [M]  /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/ecrnx_fw_trace.o
+  CC [M]  /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/ecrnx_debug.o
+  CC [M]  /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/fullmac/ecrnx_p2p.o
   CC [M]  /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/fullmac/ecrnx_debugfs_func.o
-  CC [M]  /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/fullmac/ecrnx_debugfs_custom.o
+In file included from /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/usb/core.h:9,
+                 from /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/fw_head_check.h:16,
+                 from /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/fullmac/ecrnx_debugfs_func.h:7,
+                 from /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/fullmac/ecrnx_debugfs_func.c:1:
+/home/user0/.WORKDIR/eswin_wifi/eswin_6600u/ecrnx_compat.h:531: warning: "ECRNX_MODERN_KERNEL" redefined
+  531 | #define ECRNX_MODERN_KERNEL
+      | 
+<command-line>: note: this is the location of the previous definition
 /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/fullmac/ecrnx_debugfs_func.c:75:6: warning: no previous declaration for ‘ecrnx_debugfs_param_send’ [-Wmissing-declarations]
    75 | void ecrnx_debugfs_param_send(debugfs_info_t *req)
       |      ^~~~~~~~~~~~~~~~~~~~~~~~
@@ -255,6 +313,16 @@ In file included from ./include/linux/string.h:292,
 /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/fullmac/ecrnx_debugfs_func.c:830:5: warning: no previous declaration for ‘cli_check_parm_range’ [-Wmissing-declarations]
   830 | int cli_check_parm_range(uint32_t start_index, uint32_t index, uint32_t argc, char* argv[])
       |     ^~~~~~~~~~~~~~~~~~~~
+  CC [M]  /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/fullmac/ecrnx_debugfs_custom.o
+In file included from /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/usb/core.h:9,
+                 from /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/fw_head_check.h:16,
+                 from /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/fullmac/ecrnx_debugfs_func.h:7,
+                 from /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/fullmac/ecrnx_debugfs_custom.h:9,
+                 from /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/fullmac/ecrnx_debugfs_custom.c:1:
+/home/user0/.WORKDIR/eswin_wifi/eswin_6600u/ecrnx_compat.h:531: warning: "ECRNX_MODERN_KERNEL" redefined
+  531 | #define ECRNX_MODERN_KERNEL
+      | 
+<command-line>: note: this is the location of the previous definition
 /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/fullmac/ecrnx_debugfs_custom.c:66:6: warning: no previous declaration for ‘seq_reg_display_u32’ [-Wmissing-declarations]
    66 | void seq_reg_display_u32(struct seq_file *seq, u32 addr, u32 *reg, u32 len)
       |      ^~~~~~~~~~~~~~~~~~~
@@ -286,7 +354,6 @@ In file included from ./include/linux/string.h:292,
  1117 | void exrnx_debugfs_sruvey_info_tbl_init(void *private_data)
       |      ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   LD [M]  /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/wlan_ecr6600.o
-/bin/sh: 1: test: Illegal number: 6.8
   MODPOST /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/Module.symvers
   CC [M]  /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/wlan_ecr6600.mod.o
   LD [M]  /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/wlan_ecr6600.ko
