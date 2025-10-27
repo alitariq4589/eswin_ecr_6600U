@@ -1176,10 +1176,10 @@ int ecrnx_handle_dynparams(struct ecrnx_hw *ecrnx_hw, struct wiphy *wiphy)
 
     /* Set VHT capabilities */
     ecrnx_set_vht_capa(ecrnx_hw, wiphy);
-
+#ifdef CONFIG_ECRNX_HE
     /* Set HE capabilities */
     ecrnx_set_he_capa(ecrnx_hw, wiphy);
-
+#endif
     /* Set HT capabilities */
     ecrnx_set_ht_capa(ecrnx_hw, wiphy);
 

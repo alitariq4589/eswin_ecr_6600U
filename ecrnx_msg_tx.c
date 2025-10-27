@@ -910,7 +910,9 @@ int ecrnx_send_me_config_req(struct ecrnx_hw *ecrnx_hw)
 #else
     req->he_ul_on = false;
 
-    req->he_supp = ecrnx_he_cap.has_he;
+    // req->he_supp = ecrnx_he_cap.has_he; // Not supported so commented out
+    req->he_supp = false;
+#ifdef CONFIG_ECRNX_HE
     for (i = 0; i < ARRAY_SIZE(ecrnx_he_cap.he_cap_elem.mac_cap_info); i++) {
         req->he_cap.mac_cap_info[i] = ecrnx_he_cap.he_cap_elem.mac_cap_info[i];
     }
@@ -926,6 +928,10 @@ int ecrnx_send_me_config_req(struct ecrnx_hw *ecrnx_hw)
     for (i = 0; i < MAC_HE_PPE_THRES_MAX_LEN; i++) {
         req->he_cap.ppe_thres[i] = ecrnx_he_cap.ppe_thres[i];
     }
+#else
+    memset(&req->he_cap, 0, sizeof(req->he_cap));
+#endif
+
 #endif
 
     req->ps_on = ecrnx_hw->mod_params->ps_on;

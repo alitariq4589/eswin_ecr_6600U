@@ -8,18 +8,32 @@ warning: the compiler differs from the one used to build the kernel
   The kernel was built by: x86_64-linux-gnu-gcc-12 (Ubuntu 12.3.0-1ubuntu1~22.04.2) 12.3.0
   You are using:           gcc-12 (Ubuntu 12.3.0-1ubuntu1~22.04.2) 12.3.0
   CC [M]  /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/ecrnx_msg_tx.o
+In file included from /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/ecrnx_msg_tx.h:16,
+                 from /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/ecrnx_msg_tx.c:13:
+/home/user0/.WORKDIR/eswin_wifi/eswin_6600u/fullmac/ecrnx_defs.h:1094:5: warning: "CONFIG_ECRNX_HE" is not defined, evaluates to 0 [-Wundef]
+ 1094 | #if CONFIG_ECRNX_HE
+      |     ^~~~~~~~~~~~~~~
 In file included from /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/ecrnx_msg_tx.c:19:
 /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/ecrnx_compat.h:531: warning: "ECRNX_MODERN_KERNEL" redefined
   531 | #define ECRNX_MODERN_KERNEL
       | 
 <command-line>: note: this is the location of the previous definition
   CC [M]  /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/ecrnx_msg_rx.o
+In file included from /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/ecrnx_msg_rx.c:12:
+/home/user0/.WORKDIR/eswin_wifi/eswin_6600u/fullmac/ecrnx_defs.h:1094:5: warning: "CONFIG_ECRNX_HE" is not defined, evaluates to 0 [-Wundef]
+ 1094 | #if CONFIG_ECRNX_HE
+      |     ^~~~~~~~~~~~~~~
 In file included from /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/ecrnx_events.h:22,
                  from /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/ecrnx_msg_rx.c:21:
 /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/ecrnx_compat.h:531: warning: "ECRNX_MODERN_KERNEL" redefined
   531 | #define ECRNX_MODERN_KERNEL
       | 
 <command-line>: note: this is the location of the previous definition
+/home/user0/.WORKDIR/eswin_wifi/eswin_6600u/ecrnx_msg_rx.c: In function ‘ecrnx_rx_remain_on_channel_exp_ind’:
+/home/user0/.WORKDIR/eswin_wifi/eswin_6600u/ecrnx_msg_rx.c:238:5: warning: "CONFIG_ECRNX_P2P" is not defined, evaluates to 0 [-Wundef]
+  238 | #if CONFIG_ECRNX_P2P
+      |     ^~~~~~~~~~~~~~~~
+/home/user0/.WORKDIR/eswin_wifi/eswin_6600u/ecrnx_msg_rx.c: At top level:
 /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/ecrnx_msg_rx.c:578:7: warning: no previous declaration for ‘getBootTime’ [-Wmissing-declarations]
   578 | u64_l getBootTime(void)
       |       ^~~~~~~~~~~
@@ -27,6 +41,10 @@ In file included from /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/ecrnx_events.h
  1387 | __maybe_unused void ecrnx_rx_handle_msg(struct ecrnx_hw *ecrnx_hw, struct ipc_e2a_msg *msg)
       |                     ^~~~~~~~~~~~~~~~~~~
   CC [M]  /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/ecrnx_utils.o
+In file included from /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/ecrnx_utils.c:9:
+/home/user0/.WORKDIR/eswin_wifi/eswin_6600u/fullmac/ecrnx_defs.h:1094:5: warning: "CONFIG_ECRNX_HE" is not defined, evaluates to 0 [-Wundef]
+ 1094 | #if CONFIG_ECRNX_HE
+      |     ^~~~~~~~~~~~~~~
 In file included from /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/usb/core.h:9,
                  from /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/fw_head_check.h:16,
                  from /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/fullmac/ecrnx_debugfs_func.h:7,
@@ -39,6 +57,10 @@ In file included from /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/usb/core.h:9,
    98 | static int ecrnx_ipc_skb_elem_allocs(struct ecrnx_hw *ecrnx_hw,
       |            ^~~~~~~~~~~~~~~~~~~~~~~~~
   CC [M]  /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/ecrnx_cmds.o
+In file included from /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/ecrnx_cmds.c:17:
+/home/user0/.WORKDIR/eswin_wifi/eswin_6600u/fullmac/ecrnx_defs.h:1094:5: warning: "CONFIG_ECRNX_HE" is not defined, evaluates to 0 [-Wundef]
+ 1094 | #if CONFIG_ECRNX_HE
+      |     ^~~~~~~~~~~~~~~
 In file included from /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/ecrnx_events.h:22,
                  from /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/ecrnx_cmds.c:20:
 /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/ecrnx_compat.h:531: warning: "ECRNX_MODERN_KERNEL" redefined
@@ -46,6 +68,10 @@ In file included from /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/ecrnx_events.h
       | 
 <command-line>: note: this is the location of the previous definition
   CC [M]  /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/ecrnx_cfgfile.o
+In file included from /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/ecrnx_cfgfile.c:13:
+/home/user0/.WORKDIR/eswin_wifi/eswin_6600u/fullmac/ecrnx_defs.h:1094:5: warning: "CONFIG_ECRNX_HE" is not defined, evaluates to 0 [-Wundef]
+ 1094 | #if CONFIG_ECRNX_HE
+      |     ^~~~~~~~~~~~~~~
 In file included from /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/usb/core.h:9,
                  from /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/fw_head_check.h:16,
                  from /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/fullmac/ecrnx_debugfs_func.h:7,
@@ -56,6 +82,10 @@ In file included from /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/usb/core.h:9,
 <command-line>: note: this is the location of the previous definition
   CC [M]  /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/ecrnx_strs.o
   CC [M]  /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/ecrnx_txq.o
+In file included from /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/ecrnx_txq.c:11:
+/home/user0/.WORKDIR/eswin_wifi/eswin_6600u/fullmac/ecrnx_defs.h:1094:5: warning: "CONFIG_ECRNX_HE" is not defined, evaluates to 0 [-Wundef]
+ 1094 | #if CONFIG_ECRNX_HE
+      |     ^~~~~~~~~~~~~~~
 In file included from /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/ecrnx_events.h:22,
                  from /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/ecrnx_txq.c:14:
 /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/ecrnx_compat.h:531: warning: "ECRNX_MODERN_KERNEL" redefined
@@ -63,12 +93,24 @@ In file included from /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/ecrnx_events.h
       | 
 <command-line>: note: this is the location of the previous definition
   CC [M]  /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/ecrnx_mod_params.o
+In file included from /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/ecrnx_mod_params.c:15:
+/home/user0/.WORKDIR/eswin_wifi/eswin_6600u/fullmac/ecrnx_defs.h:1094:5: warning: "CONFIG_ECRNX_HE" is not defined, evaluates to 0 [-Wundef]
+ 1094 | #if CONFIG_ECRNX_HE
+      |     ^~~~~~~~~~~~~~~
 In file included from /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/ecrnx_mod_params.c:20:
 /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/ecrnx_compat.h:531: warning: "ECRNX_MODERN_KERNEL" redefined
   531 | #define ECRNX_MODERN_KERNEL
       | 
 <command-line>: note: this is the location of the previous definition
+/home/user0/.WORKDIR/eswin_wifi/eswin_6600u/ecrnx_mod_params.c:905:13: warning: ‘ecrnx_set_he_capa’ defined but not used [-Wunused-function]
+  905 | static void ecrnx_set_he_capa(struct ecrnx_hw *ecrnx_hw, struct wiphy *wiphy)
+      |             ^~~~~~~~~~~~~~~~~
   CC [M]  /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/ecrnx_platform.o
+In file included from /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/fullmac/ecrnx_main.h:14,
+                 from /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/ecrnx_platform.c:18:
+/home/user0/.WORKDIR/eswin_wifi/eswin_6600u/fullmac/ecrnx_defs.h:1094:5: warning: "CONFIG_ECRNX_HE" is not defined, evaluates to 0 [-Wundef]
+ 1094 | #if CONFIG_ECRNX_HE
+      |     ^~~~~~~~~~~~~~~
 In file included from /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/usb/core.h:9,
                  from /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/ecrnx_platform.c:28:
 /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/ecrnx_compat.h:531: warning: "ECRNX_MODERN_KERNEL" redefined
@@ -76,8 +118,16 @@ In file included from /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/usb/core.h:9,
       | 
 <command-line>: note: this is the location of the previous definition
   CC [M]  /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/ipc_host.o
+In file included from /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/ipc_host.c:25:
+/home/user0/.WORKDIR/eswin_wifi/eswin_6600u/fullmac/ecrnx_defs.h:1094:5: warning: "CONFIG_ECRNX_HE" is not defined, evaluates to 0 [-Wundef]
+ 1094 | #if CONFIG_ECRNX_HE
+      |     ^~~~~~~~~~~~~~~
   CC [M]  /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/hal_desc.o
   CC [M]  /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/ecrnx_iwpriv.o
+In file included from /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/ecrnx_iwpriv.c:19:
+/home/user0/.WORKDIR/eswin_wifi/eswin_6600u/fullmac/ecrnx_defs.h:1094:5: warning: "CONFIG_ECRNX_HE" is not defined, evaluates to 0 [-Wundef]
+ 1094 | #if CONFIG_ECRNX_HE
+      |     ^~~~~~~~~~~~~~~
 In file included from /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/usb/core.h:9,
                  from /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/ecrnx_iwpriv.c:25:
 /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/ecrnx_compat.h:531: warning: "ECRNX_MODERN_KERNEL" redefined
@@ -91,6 +141,11 @@ In file included from /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/usb/core.h:9,
   531 | #define ECRNX_MODERN_KERNEL
       | 
 <command-line>: note: this is the location of the previous definition
+In file included from /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/fw_load.h:16,
+                 from /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/usb/core.h:10:
+/home/user0/.WORKDIR/eswin_wifi/eswin_6600u/fullmac/ecrnx_defs.h:1094:5: warning: "CONFIG_ECRNX_HE" is not defined, evaluates to 0 [-Wundef]
+ 1094 | #if CONFIG_ECRNX_HE
+      |     ^~~~~~~~~~~~~~~
   CC [M]  /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/slave_log_buf.o
 In file included from /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/usb/core.h:9,
                  from /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/slave_log_buf.h:4,
@@ -99,21 +154,54 @@ In file included from /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/usb/core.h:9,
   531 | #define ECRNX_MODERN_KERNEL
       | 
 <command-line>: note: this is the location of the previous definition
+In file included from /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/fw_load.h:16,
+                 from /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/usb/core.h:10:
+/home/user0/.WORKDIR/eswin_wifi/eswin_6600u/fullmac/ecrnx_defs.h:1094:5: warning: "CONFIG_ECRNX_HE" is not defined, evaluates to 0 [-Wundef]
+ 1094 | #if CONFIG_ECRNX_HE
+      |     ^~~~~~~~~~~~~~~
   CC [M]  /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/fullmac/ecrnx_tdls.o
+In file included from /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/fullmac/ecrnx_tdls.h:16,
+                 from /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/fullmac/ecrnx_tdls.c:16:
+/home/user0/.WORKDIR/eswin_wifi/eswin_6600u/fullmac/ecrnx_defs.h:1094:5: warning: "CONFIG_ECRNX_HE" is not defined, evaluates to 0 [-Wundef]
+ 1094 | #if CONFIG_ECRNX_HE
+      |     ^~~~~~~~~~~~~~~
 In file included from /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/fullmac/ecrnx_tdls.c:17:
 /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/ecrnx_compat.h:531: warning: "ECRNX_MODERN_KERNEL" redefined
   531 | #define ECRNX_MODERN_KERNEL
       | 
 <command-line>: note: this is the location of the previous definition
   CC [M]  /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/fullmac/ecrnx_mesh.o
+In file included from /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/fullmac/ecrnx_mesh.h:21,
+                 from /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/fullmac/ecrnx_mesh.c:16:
+/home/user0/.WORKDIR/eswin_wifi/eswin_6600u/fullmac/ecrnx_defs.h:1094:5: warning: "CONFIG_ECRNX_HE" is not defined, evaluates to 0 [-Wundef]
+ 1094 | #if CONFIG_ECRNX_HE
+      |     ^~~~~~~~~~~~~~~
   CC [M]  /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/fullmac/ecrnx_main.o
+In file included from /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/fullmac/ecrnx_main.c:20:
+/home/user0/.WORKDIR/eswin_wifi/eswin_6600u/fullmac/ecrnx_defs.h:1094:5: warning: "CONFIG_ECRNX_HE" is not defined, evaluates to 0 [-Wundef]
+ 1094 | #if CONFIG_ECRNX_HE
+      |     ^~~~~~~~~~~~~~~
 In file included from /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/ecrnx_events.h:22,
                  from /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/fullmac/ecrnx_main.c:38:
 /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/ecrnx_compat.h:531: warning: "ECRNX_MODERN_KERNEL" redefined
   531 | #define ECRNX_MODERN_KERNEL
       | 
 <command-line>: note: this is the location of the previous definition
+/home/user0/.WORKDIR/eswin_wifi/eswin_6600u/fullmac/ecrnx_main.c:191:5: warning: "CONFIG_ECRNX_HE" is not defined, evaluates to 0 [-Wundef]
+  191 | #if CONFIG_ECRNX_HE
+      |     ^~~~~~~~~~~~~~~
+/home/user0/.WORKDIR/eswin_wifi/eswin_6600u/fullmac/ecrnx_main.c:206:5: warning: "CONFIG_ECRNX_HE" is not defined, evaluates to 0 [-Wundef]
+  206 | #if CONFIG_ECRNX_HE
+      |     ^~~~~~~~~~~~~~~
+/home/user0/.WORKDIR/eswin_wifi/eswin_6600u/fullmac/ecrnx_main.c: In function ‘ecrnx_fill_station_info’:
+/home/user0/.WORKDIR/eswin_wifi/eswin_6600u/fullmac/ecrnx_main.c:3647:5: warning: "CONFIG_ECRNX_HE" is not defined, evaluates to 0 [-Wundef]
+ 3647 | #if CONFIG_ECRNX_HE
+      |     ^~~~~~~~~~~~~~~
   CC [M]  /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/fullmac/ecrnx_rx.o
+In file included from /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/fullmac/ecrnx_rx.c:16:
+/home/user0/.WORKDIR/eswin_wifi/eswin_6600u/fullmac/ecrnx_defs.h:1094:5: warning: "CONFIG_ECRNX_HE" is not defined, evaluates to 0 [-Wundef]
+ 1094 | #if CONFIG_ECRNX_HE
+      |     ^~~~~~~~~~~~~~~
 In file included from /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/ecrnx_events.h:22,
                  from /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/fullmac/ecrnx_rx.c:20:
 /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/ecrnx_compat.h:531: warning: "ECRNX_MODERN_KERNEL" redefined
@@ -150,6 +238,10 @@ In function ‘fortify_memcpy_chk’,
   542 |                         __write_overflow_field(p_size_field, size);
       |                         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   CC [M]  /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/fullmac/ecrnx_tx.o
+In file included from /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/fullmac/ecrnx_tx.c:14:
+/home/user0/.WORKDIR/eswin_wifi/eswin_6600u/fullmac/ecrnx_defs.h:1094:5: warning: "CONFIG_ECRNX_HE" is not defined, evaluates to 0 [-Wundef]
+ 1094 | #if CONFIG_ECRNX_HE
+      |     ^~~~~~~~~~~~~~~
 In file included from /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/ecrnx_events.h:22,
                  from /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/fullmac/ecrnx_tx.c:18:
 /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/ecrnx_compat.h:531: warning: "ECRNX_MODERN_KERNEL" redefined
@@ -161,6 +253,11 @@ In file included from /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/ecrnx_events.h
       |      ^~~~~~~~~~~~~~~~~~
   CC [M]  /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/fullmac/ecrnx_calibration_data.o
   CC [M]  /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/usb/usb.o
+In file included from /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/usb/usb.h:16,
+                 from /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/usb/usb.c:21:
+/home/user0/.WORKDIR/eswin_wifi/eswin_6600u/fullmac/ecrnx_defs.h:1094:5: warning: "CONFIG_ECRNX_HE" is not defined, evaluates to 0 [-Wundef]
+ 1094 | #if CONFIG_ECRNX_HE
+      |     ^~~~~~~~~~~~~~~
 In file included from /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/usb/core.h:9,
                  from /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/usb/usb.c:23:
 /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/ecrnx_compat.h:531: warning: "ECRNX_MODERN_KERNEL" redefined
@@ -195,6 +292,11 @@ In file included from /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/usb/core.h:9,
   531 | #define ECRNX_MODERN_KERNEL
       | 
 <command-line>: note: this is the location of the previous definition
+In file included from /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/fw_load.h:16,
+                 from /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/usb/core.h:10:
+/home/user0/.WORKDIR/eswin_wifi/eswin_6600u/fullmac/ecrnx_defs.h:1094:5: warning: "CONFIG_ECRNX_HE" is not defined, evaluates to 0 [-Wundef]
+ 1094 | #if CONFIG_ECRNX_HE
+      |     ^~~~~~~~~~~~~~~
   CC [M]  /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/usb/fw.o
 In file included from /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/usb/core.h:9,
                  from /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/usb/fw.c:14:
@@ -202,6 +304,11 @@ In file included from /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/usb/core.h:9,
   531 | #define ECRNX_MODERN_KERNEL
       | 
 <command-line>: note: this is the location of the previous definition
+In file included from /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/fw_load.h:16,
+                 from /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/usb/core.h:10:
+/home/user0/.WORKDIR/eswin_wifi/eswin_6600u/fullmac/ecrnx_defs.h:1094:5: warning: "CONFIG_ECRNX_HE" is not defined, evaluates to 0 [-Wundef]
+ 1094 | #if CONFIG_ECRNX_HE
+      |     ^~~~~~~~~~~~~~~
 /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/usb/fw.c:57:15: warning: no previous declaration for ‘eswin_crc8’ [-Wmissing-declarations]
    57 | unsigned char eswin_crc8(unsigned char * buf, unsigned short length)
       |               ^~~~~~~~~~
@@ -221,7 +328,16 @@ In file included from /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/usb/core.h:9,
   531 | #define ECRNX_MODERN_KERNEL
       | 
 <command-line>: note: this is the location of the previous definition
+In file included from /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/fw_load.h:16,
+                 from /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/usb/core.h:10:
+/home/user0/.WORKDIR/eswin_wifi/eswin_6600u/fullmac/ecrnx_defs.h:1094:5: warning: "CONFIG_ECRNX_HE" is not defined, evaluates to 0 [-Wundef]
+ 1094 | #if CONFIG_ECRNX_HE
+      |     ^~~~~~~~~~~~~~~
   CC [M]  /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/eswin_port/eswin_utils.o
+In file included from /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/eswin_port/eswin_utils.c:17:
+/home/user0/.WORKDIR/eswin_wifi/eswin_6600u/fullmac/ecrnx_defs.h:1094:5: warning: "CONFIG_ECRNX_HE" is not defined, evaluates to 0 [-Wundef]
+ 1094 | #if CONFIG_ECRNX_HE
+      |     ^~~~~~~~~~~~~~~
 In file included from /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/ecrnx_events.h:22,
                  from /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/eswin_port/eswin_utils.c:21:
 /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/ecrnx_compat.h:531: warning: "ECRNX_MODERN_KERNEL" redefined
@@ -232,6 +348,11 @@ In file included from /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/ecrnx_events.h
    32 | void ecrnx_send_handle_register(void * fn)
       |      ^~~~~~~~~~~~~~~~~~~~~~~~~~
   CC [M]  /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/fullmac/ecrnx_amt.o
+In file included from /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/fullmac/ecrnx_main.h:14,
+                 from /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/fullmac/ecrnx_amt.c:13:
+/home/user0/.WORKDIR/eswin_wifi/eswin_6600u/fullmac/ecrnx_defs.h:1094:5: warning: "CONFIG_ECRNX_HE" is not defined, evaluates to 0 [-Wundef]
+ 1094 | #if CONFIG_ECRNX_HE
+      |     ^~~~~~~~~~~~~~~
 /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/fullmac/ecrnx_amt.c:71:6: warning: no previous declaration for ‘ecrnx_amt_config_msg_send’ [-Wmissing-declarations]
    71 |  int ecrnx_amt_config_msg_send(void)
       |      ^~~~~~~~~~~~~~~~~~~~~~~~~
@@ -242,9 +363,7 @@ In file included from ./include/linux/string.h:292,
                  from ./include/linux/bitmap.h:13,
                  from ./include/linux/cpumask.h:12,
                  from ./include/linux/interrupt.h:8,
-                 from /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/fullmac/ecrnx_defs.h:16,
-                 from /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/fullmac/ecrnx_main.h:14,
-                 from /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/fullmac/ecrnx_amt.c:13:
+                 from /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/fullmac/ecrnx_defs.h:16:
 /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/fullmac/ecrnx_amt.c: In function ‘ecrnx_amt_init’:
 /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/fullmac/ecrnx_amt.c:114:20: warning: passing argument 1 of ‘__builtin_memset’ discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
   114 |         memset(ndev->dev_addr, 0, ETH_ALEN);
@@ -269,6 +388,10 @@ In file included from ./include/linux/string.h:292,
   136 | void ecrnx_amt_deinit(void)
       |      ^~~~~~~~~~~~~~~~
   CC [M]  /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/ecrnx_radar.o
+In file included from /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/ecrnx_radar.c:20:
+/home/user0/.WORKDIR/eswin_wifi/eswin_6600u/fullmac/ecrnx_defs.h:1094:5: warning: "CONFIG_ECRNX_HE" is not defined, evaluates to 0 [-Wundef]
+ 1094 | #if CONFIG_ECRNX_HE
+      |     ^~~~~~~~~~~~~~~
 In file included from /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/ecrnx_events.h:22,
                  from /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/ecrnx_radar.c:22:
 /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/ecrnx_compat.h:531: warning: "ECRNX_MODERN_KERNEL" redefined
@@ -279,18 +402,38 @@ In file included from /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/ecrnx_events.h
   900 | struct pri_detector *pri_detector_init(struct dfs_pattern_detector *dpd,
       |                      ^~~~~~~~~~~~~~~~~
   CC [M]  /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/ecrnx_debugfs.o
+In file included from /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/ecrnx_msg_tx.h:16,
+                 from /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/ecrnx_debugfs.c:21:
+/home/user0/.WORKDIR/eswin_wifi/eswin_6600u/fullmac/ecrnx_defs.h:1094:5: warning: "CONFIG_ECRNX_HE" is not defined, evaluates to 0 [-Wundef]
+ 1094 | #if CONFIG_ECRNX_HE
+      |     ^~~~~~~~~~~~~~~
 /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/ecrnx_debugfs.c:2206:6: warning: no previous declaration for ‘_ecrnx_dbgfs_sta_write’ [-Wmissing-declarations]
  2206 | void _ecrnx_dbgfs_sta_write(struct ecrnx_debugfs *ecrnx_debugfs, uint8_t sta_idx)
       |      ^~~~~~~~~~~~~~~~~~~~~~
   CC [M]  /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/ecrnx_fw_dump.o
+In file included from /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/ecrnx_fw_dump.c:17:
+/home/user0/.WORKDIR/eswin_wifi/eswin_6600u/fullmac/ecrnx_defs.h:1094:5: warning: "CONFIG_ECRNX_HE" is not defined, evaluates to 0 [-Wundef]
+ 1094 | #if CONFIG_ECRNX_HE
+      |     ^~~~~~~~~~~~~~~
   CC [M]  /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/ecrnx_fw_trace.o
+In file included from /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/ecrnx_fw_trace.c:18:
+/home/user0/.WORKDIR/eswin_wifi/eswin_6600u/fullmac/ecrnx_defs.h:1094:5: warning: "CONFIG_ECRNX_HE" is not defined, evaluates to 0 [-Wundef]
+ 1094 | #if CONFIG_ECRNX_HE
+      |     ^~~~~~~~~~~~~~~
   CC [M]  /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/ecrnx_debug.o
-  CC [M]  /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/fullmac/ecrnx_p2p.o
+In file included from /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/ecrnx_debug.c:13:
+/home/user0/.WORKDIR/eswin_wifi/eswin_6600u/fullmac/ecrnx_defs.h:1094:5: warning: "CONFIG_ECRNX_HE" is not defined, evaluates to 0 [-Wundef]
+ 1094 | #if CONFIG_ECRNX_HE
+      |     ^~~~~~~~~~~~~~~
   CC [M]  /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/fullmac/ecrnx_debugfs_func.o
+In file included from /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/fullmac/ecrnx_debugfs_func.h:4,
+                 from /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/fullmac/ecrnx_debugfs_func.c:1:
+/home/user0/.WORKDIR/eswin_wifi/eswin_6600u/fullmac/ecrnx_defs.h:1094:5: warning: "CONFIG_ECRNX_HE" is not defined, evaluates to 0 [-Wundef]
+ 1094 | #if CONFIG_ECRNX_HE
+      |     ^~~~~~~~~~~~~~~
 In file included from /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/usb/core.h:9,
                  from /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/fw_head_check.h:16,
-                 from /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/fullmac/ecrnx_debugfs_func.h:7,
-                 from /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/fullmac/ecrnx_debugfs_func.c:1:
+                 from /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/fullmac/ecrnx_debugfs_func.h:7:
 /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/ecrnx_compat.h:531: warning: "ECRNX_MODERN_KERNEL" redefined
   531 | #define ECRNX_MODERN_KERNEL
       | 
@@ -314,11 +457,15 @@ In file included from /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/usb/core.h:9,
   830 | int cli_check_parm_range(uint32_t start_index, uint32_t index, uint32_t argc, char* argv[])
       |     ^~~~~~~~~~~~~~~~~~~~
   CC [M]  /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/fullmac/ecrnx_debugfs_custom.o
-In file included from /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/usb/core.h:9,
-                 from /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/fw_head_check.h:16,
-                 from /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/fullmac/ecrnx_debugfs_func.h:7,
+In file included from /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/fullmac/ecrnx_debugfs_func.h:4,
                  from /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/fullmac/ecrnx_debugfs_custom.h:9,
                  from /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/fullmac/ecrnx_debugfs_custom.c:1:
+/home/user0/.WORKDIR/eswin_wifi/eswin_6600u/fullmac/ecrnx_defs.h:1094:5: warning: "CONFIG_ECRNX_HE" is not defined, evaluates to 0 [-Wundef]
+ 1094 | #if CONFIG_ECRNX_HE
+      |     ^~~~~~~~~~~~~~~
+In file included from /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/usb/core.h:9,
+                 from /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/fw_head_check.h:16,
+                 from /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/fullmac/ecrnx_debugfs_func.h:7:
 /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/ecrnx_compat.h:531: warning: "ECRNX_MODERN_KERNEL" redefined
   531 | #define ECRNX_MODERN_KERNEL
       | 

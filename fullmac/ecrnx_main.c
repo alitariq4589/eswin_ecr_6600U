@@ -204,8 +204,8 @@ static struct ieee80211_supported_band ecrnx_band_2GHz = {
     .ht_cap     = ECRNX_HT_CAPABILITIES,
 #if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 20, 0)
 #if CONFIG_ECRNX_HE
-    .iftype_data = &ecrnx_he_capa,
-    .n_iftype_data = 1,
+    // .iftype_data = &ecrnx_he_capa,
+    // .n_iftype_data = 1,
 #endif
 #endif
 };
@@ -4364,10 +4364,11 @@ int ecrnx_get_cal_result(struct ecrnx_hw *ecrnx_hw)
 
 	return ret;
 }
-
+#ifdef CONFIG_ECRNX_HE
 void ecrnx_he_init(void)
 {
-    ecrnx_he_cap.has_he = true;
+    // ecrnx_he_cap.has_he = true;
+    ecrnx_he_cap.has_he = false;
     memset(&ecrnx_he_cap.he_cap_elem, 0, sizeof(struct ieee80211_he_cap_elem));
 
     ecrnx_he_cap.he_mcs_nss_supp.rx_mcs_80 = cpu_to_le16(0xfffa);
@@ -4378,6 +4379,7 @@ void ecrnx_he_init(void)
     ecrnx_he_cap.he_mcs_nss_supp.tx_mcs_80p80 = cpu_to_le16(0xffff);
     memset(ecrnx_he_cap.ppe_thres, 0, sizeof(u8)*IEEE80211_HE_PPE_THRES_MAX_LEN);
 }
+#endif
 
 /**
  *
@@ -4508,7 +4510,7 @@ int ecrnx_cfg80211_init(void *ecrnx_plat, void **platform_data)
 #endif
 
 #if LINUX_VERSION_CODE < KERNEL_VERSION(4, 20, 0)
-    ecrnx_he_init();
+    // ecrnx_he_init();
 #endif
 
     if (ecrnx_mod_params.tdls)
