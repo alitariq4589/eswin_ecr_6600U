@@ -351,20 +351,28 @@ void ecrnx_release_list(struct ecrnx_hw *ecrnx_hw, bool is_exit)
     struct ecrnx_debugfs_survey_info_tbl *note, *tmp;
 #endif
 
+    if (!ecrnx_hw) {
+        ecrnx_printk_err("[ecrnx] %s: NULL ecrnx_hw pointer\n", __func__);
+        return;
+    }
+
 #ifdef CONFIG_WIRELESS_EXT
-    list_for_each_entry_safe(entry, next, &ecrnx_hw->scan_list, list) {
-        list_del(&entry->list);
-        kfree(entry);
+    if (!list_empty(&ecrnx_hw->scan_list)){
+        list_for_each_entry_safe(entry, next, &ecrnx_hw->scan_list, list) {
+            list_del(&entry->list);
+            kfree(entry);
+        }
     }
 #endif
 
 #if defined(CONFIG_ECRNX_DEBUGFS_CUSTOM)
     if(is_exit)
     {
-        list_for_each_entry_safe(note, tmp, &ecrnx_hw->debugfs_survey_info_tbl_ptr, list)
-        {
-            list_del(&note->list);
-            kfree(note);
+        if (!list_empty(&ecrnx_hw->debugfs_survey_info_tbl_ptr)){
+            list_for_each_entry_safe(note, tmp, &ecrnx_hw->debugfs_survey_info_tbl_ptr, list){
+                list_del(&note->list);
+                kfree(note);
+            }
         }
     }
 #endif

@@ -4410,7 +4410,17 @@ int ecrnx_cfg80211_init(void *ecrnx_plat, void **platform_data)
     ecrnx_hw->mod_params = &ecrnx_mod_params;
     ecrnx_hw->tcp_pacing_shift = 7;
     *platform_data = ecrnx_hw;
+    
+    /* Initialize list heads to prevent NULL pointer crashes - ADD THESE LINES */
+#ifdef CONFIG_WIRELESS_EXT
+    INIT_LIST_HEAD(&ecrnx_hw->scan_list);
+#endif
 
+#if defined(CONFIG_ECRNX_DEBUGFS_CUSTOM)
+    INIT_LIST_HEAD(&ecrnx_hw->debugfs_survey_info_tbl_ptr);
+#endif
+
+    /* set device pointer for wiphy */
     /* set device pointer for wiphy */
     set_wiphy_dev(wiphy, ecrnx_hw->dev);
     /* Create cache to allocate sw_txhdr */
