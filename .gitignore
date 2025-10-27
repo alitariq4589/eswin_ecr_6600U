@@ -1,0 +1,21 @@
+# Driver Build Artifacts
+*.o
+*.ko
+*.mod.c
+*.mod
+modules.order
+Module.symvers
+.modules
+.tmp_versions
+
+# Compilation/Build directories and files
+/lib
+/pci
+/usb
+/misc
+/d
+/tmp
+/wlan_ap
+
+# Kernel Build Directory Cache
+.vpath-cache
