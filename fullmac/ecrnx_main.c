@@ -4688,12 +4688,6 @@ void ecrnx_cfg80211_deinit(struct ecrnx_hw *ecrnx_hw)
  */
 static int __init ecrnx_mod_init(void)
 {
-    int ret;
-#ifdef CONFIG_ECRNX_ESWIN_USB
-    ret = ecrnx_usb_driver_init();
-    if (ret)
-        return ret;
-#endif
     ecrnx_printk_init(ECRNX_FN_ENTRY_STR);
     ecrnx_print_version();
     return ecrnx_platform_register_drv();
@@ -4704,14 +4698,6 @@ static int __init ecrnx_mod_init(void)
  */
 static void __exit ecrnx_mod_exit(void)
 {
-    int ret;
-
-#ifdef CONFIG_ECRNX_ESWIN_USB
-    ret = ecrnx_usb_driver_init();
-    if (ret)
-        return;
-#endif
-
     ecrnx_printk_exit(ECRNX_FN_ENTRY_STR);
 
 #if defined(CONFIG_ECRNX_DEBUGFS_CUSTOM)
