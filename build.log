@@ -20,6 +20,11 @@ In file included from /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/ecrnx_events.h
   531 | #define ECRNX_MODERN_KERNEL
       | 
 <command-line>: note: this is the location of the previous definition
+/home/user0/.WORKDIR/eswin_wifi/eswin_6600u/ecrnx_msg_rx.c: In function ‘ecrnx_rx_remain_on_channel_exp_ind’:
+/home/user0/.WORKDIR/eswin_wifi/eswin_6600u/ecrnx_msg_rx.c:238:5: warning: "CONFIG_ECRNX_P2P" is not defined, evaluates to 0 [-Wundef]
+  238 | #if CONFIG_ECRNX_P2P
+      |     ^~~~~~~~~~~~~~~~
+/home/user0/.WORKDIR/eswin_wifi/eswin_6600u/ecrnx_msg_rx.c: At top level:
 /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/ecrnx_msg_rx.c:578:7: warning: no previous declaration for ‘getBootTime’ [-Wmissing-declarations]
   578 | u64_l getBootTime(void)
       |       ^~~~~~~~~~~
@@ -285,7 +290,6 @@ In file included from /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/ecrnx_events.h
   CC [M]  /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/ecrnx_fw_dump.o
   CC [M]  /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/ecrnx_fw_trace.o
   CC [M]  /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/ecrnx_debug.o
-  CC [M]  /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/fullmac/ecrnx_p2p.o
   CC [M]  /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/fullmac/ecrnx_debugfs_func.o
 In file included from /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/usb/core.h:9,
                  from /home/user0/.WORKDIR/eswin_wifi/eswin_6600u/fw_head_check.h:16,
