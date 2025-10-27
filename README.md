@@ -7,7 +7,7 @@ I have applied some changes and refactored the source code to work with linux ve
 
 ## Steps to build and install
 
-1. Copy the file `` to `/lib/firmware` directory
+1. Copy the file `firmware/ECR6600U_transport.bin` to `/lib/firmware` directory
 
 2. Build the driver with `make`
 
