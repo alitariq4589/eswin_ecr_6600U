@@ -3715,7 +3715,9 @@ static int ecrnx_fill_station_info(struct ecrnx_sta *sta, struct ecrnx_vif *vif,
                           0);
     }
 
-    sinfo->txrate.legacy = 0x6818;
+    // Add tx rate calculation:
+
+    
 
     return 0;
 }
