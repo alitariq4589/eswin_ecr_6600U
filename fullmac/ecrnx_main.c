@@ -204,8 +204,8 @@ static struct ieee80211_supported_band ecrnx_band_2GHz = {
     .ht_cap     = ECRNX_HT_CAPABILITIES,
 #if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 20, 0)
 #if CONFIG_ECRNX_HE
-    // .iftype_data = &ecrnx_he_capa,
-    // .n_iftype_data = 1,
+    .iftype_data = &ecrnx_he_capa,
+    .n_iftype_data = 1,
 #endif
 #endif
 };
@@ -4367,16 +4367,46 @@ int ecrnx_get_cal_result(struct ecrnx_hw *ecrnx_hw)
 #ifdef CONFIG_ECRNX_HE
 void ecrnx_he_init(void)
 {
-    // ecrnx_he_cap.has_he = true;
-    ecrnx_he_cap.has_he = false;
-    memset(&ecrnx_he_cap.he_cap_elem, 0, sizeof(struct ieee80211_he_cap_elem));
+    ecrnx_he_cap.has_he = true;
+    
+    /* Set HE MAC Capabilities */
+    ecrnx_he_cap.he_cap_elem.mac_cap_info[0] = IEEE80211_HE_MAC_CAP0_HTC_HE;
+    ecrnx_he_cap.he_cap_elem.mac_cap_info[1] = 0;
+    ecrnx_he_cap.he_cap_elem.mac_cap_info[2] = 0;
+    ecrnx_he_cap.he_cap_elem.mac_cap_info[3] = 0;
+    ecrnx_he_cap.he_cap_elem.mac_cap_info[4] = 0;
+    ecrnx_he_cap.he_cap_elem.mac_cap_info[5] = 0;
+    
+    /* Set HE PHY Capabilities for 2.4GHz, 20MHz, 1x1 */
+    // Channel width: 40MHz in 2.4GHz band
+    ecrnx_he_cap.he_cap_elem.phy_cap_info[0] = IEEE80211_HE_PHY_CAP0_CHANNEL_WIDTH_SET_40MHZ_IN_2G;
+    
+    // Device class A (STA/AP), LDPC support
+    ecrnx_he_cap.he_cap_elem.phy_cap_info[1] = IEEE80211_HE_PHY_CAP1_DEVICE_CLASS_A |
+                                                 IEEE80211_HE_PHY_CAP1_LDPC_CODING_IN_PAYLOAD;
+    
+    ecrnx_he_cap.he_cap_elem.phy_cap_info[2] = 0;
+    ecrnx_he_cap.he_cap_elem.phy_cap_info[3] = 0;
+    ecrnx_he_cap.he_cap_elem.phy_cap_info[4] = 0;
+    ecrnx_he_cap.he_cap_elem.phy_cap_info[5] = 0;
+    
+    // DCM support (as per datasheet)
+    ecrnx_he_cap.he_cap_elem.phy_cap_info[6] = IEEE80211_HE_PHY_CAP6_DCM_MAX_CONSTELLATION_QPSK;
+    
+    ecrnx_he_cap.he_cap_elem.phy_cap_info[7] = 0;
+    ecrnx_he_cap.he_cap_elem.phy_cap_info[8] = 0;
+    ecrnx_he_cap.he_cap_elem.phy_cap_info[9] = 0;
+    ecrnx_he_cap.he_cap_elem.phy_cap_info[10] = 0;
 
-    ecrnx_he_cap.he_mcs_nss_supp.rx_mcs_80 = cpu_to_le16(0xfffa);
-    ecrnx_he_cap.he_mcs_nss_supp.tx_mcs_80 = cpu_to_le16(0xfffa);
-    ecrnx_he_cap.he_mcs_nss_supp.rx_mcs_160 = cpu_to_le16(0xffff);
+    /* Set MCS/NSS Support: 1 stream, MCS 0-7 */
+    ecrnx_he_cap.he_mcs_nss_supp.rx_mcs_80 = cpu_to_le16(0xfffc);
+    ecrnx_he_cap.he_mcs_nss_supp.tx_mcs_80 = cpu_to_le16(0xfffc);
+    ecrnx_he_cap.he_mcs_nss_supp.rx_mcs_160 = cpu_to_le16(0xffff);   // Not supported
     ecrnx_he_cap.he_mcs_nss_supp.tx_mcs_160 = cpu_to_le16(0xffff);
-    ecrnx_he_cap.he_mcs_nss_supp.rx_mcs_80p80 = cpu_to_le16(0xffff);
+    ecrnx_he_cap.he_mcs_nss_supp.rx_mcs_80p80 = cpu_to_le16(0xffff); // Not supported
     ecrnx_he_cap.he_mcs_nss_supp.tx_mcs_80p80 = cpu_to_le16(0xffff);
+    
+    /* Clear PPE thresholds (not used for basic config) */
     memset(ecrnx_he_cap.ppe_thres, 0, sizeof(u8)*IEEE80211_HE_PPE_THRES_MAX_LEN);
 }
 #endif
@@ -4510,7 +4540,9 @@ int ecrnx_cfg80211_init(void *ecrnx_plat, void **platform_data)
 #endif
 
 #if LINUX_VERSION_CODE < KERNEL_VERSION(4, 20, 0)
-    // ecrnx_he_init();
+#ifdef CONFIG_ECRNX_HE
+    ecrnx_he_init();
+#endif
 #endif
 
     if (ecrnx_mod_params.tdls)

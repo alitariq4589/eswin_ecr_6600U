@@ -43,7 +43,7 @@ export CONFIG_STANDALONE_WIFI=n
 # CONFIG SYSTERM TEST
 export CONFIG_STANDALONE_WIFI_BLE=y
 # Enable BFMER support (need FW support)
-export CONFIG_ECRNX_HE=n
+export CONFIG_ECRNX_HE=y
 
 # Enable P2P Listen
 export CONFIG_ECRNX_P2P=n

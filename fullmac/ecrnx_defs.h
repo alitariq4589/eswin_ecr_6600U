@@ -1096,27 +1096,27 @@ extern struct ieee80211_sta_he_cap ecrnx_he_cap;
 {                                                               \
     .has_he = false,                                            \
     .he_cap_elem = {                                            \
-        .mac_cap_info[0] = 0,                                   \
+        .mac_cap_info[0] = IEEE80211_HE_MAC_CAP0_HTC_HE,        \
         .mac_cap_info[1] = 0,                                   \
         .mac_cap_info[2] = 0,                                   \
         .mac_cap_info[3] = 0,                                   \
         .mac_cap_info[4] = 0,                                   \
         .mac_cap_info[5] = 0,                                   \
-        .phy_cap_info[0] = 0,                                   \
-        .phy_cap_info[1] = 0,                                   \
+        .phy_cap_info[0] = IEEE80211_HE_PHY_CAP0_CHANNEL_WIDTH_SET_40MHZ_IN_2G,                                   \
+        .phy_cap_info[1] = IEEE80211_HE_PHY_CAP1_DEVICE_CLASS_A | IEEE80211_HE_PHY_CAP1_LDPC_CODING_IN_PAYLOAD,   \
         .phy_cap_info[2] = 0,                                   \
         .phy_cap_info[3] = 0,                                   \
         .phy_cap_info[4] = 0,                                   \
         .phy_cap_info[5] = 0,                                   \
-        .phy_cap_info[6] = 0,                                   \
+        .phy_cap_info[6] = IEEE80211_HE_PHY_CAP6_DCM_MAX_CONSTELLATION_QPSK, \
         .phy_cap_info[7] = 0,                                   \
         .phy_cap_info[8] = 0,                                   \
         .phy_cap_info[9] = 0,                                   \
         .phy_cap_info[10] = 0,                                  \
     },                                                          \
     .he_mcs_nss_supp = {                                        \
-        .rx_mcs_80 = cpu_to_le16(0xfffa),                       \
-        .tx_mcs_80 = cpu_to_le16(0xfffa),                       \
+        .rx_mcs_80 = cpu_to_le16(0xfffc),                       \
+        .tx_mcs_80 = cpu_to_le16(0xfffc),                       \
         .rx_mcs_160 = cpu_to_le16(0xffff),                      \
         .tx_mcs_160 = cpu_to_le16(0xffff),                      \
         .rx_mcs_80p80 = cpu_to_le16(0xffff),                    \
