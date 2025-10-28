@@ -1108,7 +1108,7 @@ extern struct ieee80211_sta_he_cap ecrnx_he_cap;
         .phy_cap_info[3] = 0,                                   \
         .phy_cap_info[4] = 0,                                   \
         .phy_cap_info[5] = 0,                                   \
-        .phy_cap_info[6] = IEEE80211_HE_PHY_CAP6_DCM_MAX_CONSTELLATION_QPSK, \
+        .phy_cap_info[6] = IEEE80211_HE_PHY_CAP3_DCM_MAX_CONST_TX_QPSK, \
         .phy_cap_info[7] = 0,                                   \
         .phy_cap_info[8] = 0,                                   \
         .phy_cap_info[9] = 0,                                   \

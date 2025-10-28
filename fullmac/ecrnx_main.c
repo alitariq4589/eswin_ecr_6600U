@@ -4391,7 +4391,7 @@ void ecrnx_he_init(void)
     ecrnx_he_cap.he_cap_elem.phy_cap_info[5] = 0;
     
     // DCM support (as per datasheet)
-    ecrnx_he_cap.he_cap_elem.phy_cap_info[6] = IEEE80211_HE_PHY_CAP6_DCM_MAX_CONSTELLATION_QPSK;
+    ecrnx_he_cap.he_cap_elem.phy_cap_info[6] = IEEE80211_HE_PHY_CAP3_DCM_MAX_CONST_TX_QPSK;
     
     ecrnx_he_cap.he_cap_elem.phy_cap_info[7] = 0;
     ecrnx_he_cap.he_cap_elem.phy_cap_info[8] = 0;
