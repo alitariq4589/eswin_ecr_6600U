@@ -19,3 +19,4 @@ Module.symvers
 
 # Kernel Build Directory Cache
 .vpath-cache
+build.log
